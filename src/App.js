@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Board from "./components/Board/board";
 import './App.css';
 
 // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -18,7 +19,9 @@ class App extends Component {
 
   render() {
     return (
-      <div></div>
+      <div>
+        <Board />
+      </div>
     )
   }
 }
