@@ -1,0 +1,102 @@
+.button {
+  width: 100%;
+}
+
+.buttons {
+  margin: 20px auto;
+  text-align: center;
+  width: 450px;
+}
+
+.container {
+  padding: 0 !important;
+}
+
+.backgroundSpan {
+  left: 0;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.result-null {
+  background: white;
+}
+
+.result-solved {
+  background: rgba(255, 0, 0, 0.815);
+}
+
+.result-complete {
+  background: rgba(0, 236, 0, 0.575);
+}
+
+.shown-false {
+  display: none;
+}
+
+.shown-true {
+  display: block;
+}
+
+#bestTime {
+  font-size: 18px;
+  margin: 10px auto;
+  text-align: center;
+  width: 450px;
+}
+
+#bestTime p {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 1024px) {
+  .button {
+    width: 540px;
+  }
+
+  .buttons {
+    width: 540px;
+  }
+
+  #bestTime {
+    width: 540px;
+  }
+
+  #solveGame {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 405px;
+  }
+
+  .buttons {
+    width: 405px;
+  }
+  
+  #bestTime {
+    width: 405px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  .button {
+    width: 315px;
+  }
+
+  .buttons {
+    width: 315px;
+  }
+
+  #bestTime {
+    width: 315px;
+  }
+}
