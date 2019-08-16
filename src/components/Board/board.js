@@ -28,6 +28,8 @@ class Board extends Component {
                     col: j,
                     val: false,
                 }
+
+                cells.push(cell);
             }
         }
 
