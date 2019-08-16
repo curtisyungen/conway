@@ -30,7 +30,7 @@ class Cell extends Component {
     render() { 
         return (
             this.state.val ? (
-                <div className={`cell fill-${this.state.cell.val}`} onClick={this.toggleCell}></div>     
+                <div className={`cell fill-${this.state.cell.val}`} onClick={this.toggleCell}>cell</div>     
             ) : (
                 <></>
             )       
