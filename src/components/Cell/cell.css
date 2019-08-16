@@ -1,3 +1,15 @@
-p {
-    color: black;
+.cell {
+    border: 1px solid black;
+    cursor: pointer;
+    height: 20px;
+    margin: 2px;
+    width: 20px;
+}
+
+.fill-false {
+    background: white;
+}
+
+.fill-true {
+    background: darkgray;
 }
