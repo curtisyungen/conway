@@ -35,6 +35,8 @@ class Board extends Component {
 
         this.setState({
             cells: cells,
+        }, () => {
+            console.log("Board state", this.state);
         });
     }
 
