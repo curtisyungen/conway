@@ -26,7 +26,7 @@ class Board extends Component {
                 let cell = {
                     row: i,
                     col: j,
-                    val: false,
+                    val: j % 2 === 0,
                 }
 
                 cells.push(cell);
@@ -42,17 +42,17 @@ class Board extends Component {
 
     render() {
         return (
-            <div className="board">
-                {this.state.cells && this.state.cells.length > 0 ? (
-                    this.state.cells.map(cell => (
-                        <Cell 
-                            cell={cell}
-                        />
-                    ))
+                this.state.cells && this.state.cells.length > 0 ? (
+                    <div className="board">
+                        {this.state.cells.map(cell => (
+                            <Cell 
+                                cell={cell}
+                            />
+                        ))}
+                    </div>
                 ) : (
                     <></>
-                )}
-            </div>
+                )
         )
     }
 }
