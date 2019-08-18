@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Cell from "../Cell/cell";
+import Row from "../Row/row";
 import "./board.css";
 
 class Board extends Component {
@@ -10,31 +10,45 @@ class Board extends Component {
         this.state = {
             height: null,
             width: null,
-            cells: null,
+            board: null,
+            numRows: null,
+            numCols: null,
         }
     }
 
     componentDidMount = () => {
-        this.getCells();
+        this.setState({
+            numRows: 10,
+            numCols: 10,
+        }, () => {
+            this.getCells();
+        });
     }
 
     getCells = () => {
 
-        let cells = [];
-        for (var i = 0; i < 10; i++) {
-            for (var j = 0; j < 10; j++) {
+        let numRows = this.state.numRows;
+        let numCols = this.state.numCols;
+
+        let board = [];
+        for (var i = 0; i < numRows; i++) {
+
+            let row = [];
+            for (var j = 0; j < numCols; j++) {
                 let cell = {
                     row: i,
                     col: j,
                     val: j % 2 === 0,
                 }
 
-                cells.push(cell);
+                row.push(cell);
             }
+
+            board.push(row);
         }
 
         this.setState({
-            cells: cells,
+            board: board,
         }, () => {
             console.log("Board state", this.state);
         });
@@ -42,12 +56,12 @@ class Board extends Component {
 
     render() {
         return (
-                this.state.cells && this.state.cells.length > 0 ? (
+                this.state.board && this.state.board.length > 0 ? (
                     <div className="board">
-                        {this.state.cells.map(cell => (
-                            <Cell 
-                                cell={cell}
-                            />
+                        {this.state.board.map(row => (
+                            <Row
+                                row={row}
+                            />      
                         ))}
                     </div>
                 ) : (

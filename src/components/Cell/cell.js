@@ -15,9 +15,9 @@ class Cell extends Component {
 
     componentDidMount = () => {
         this.setState({
-            row: this.props.cell.row,
-            col: this.props.cell.col,
-            val: this.props.cell.val,
+            row: this.props.row,
+            col: this.props.col,
+            val: this.props.val,
         });
     }
 
@@ -30,7 +30,7 @@ class Cell extends Component {
     render() { 
         return (
             this.state.row ? (
-                <div className={`cell fill-${this.state.val}`} onClick={this.toggleCell}>cell</div>     
+                <div className={`cell fill-${this.state.val}`} onClick={this.toggleCell}></div>     
             ) : (
                 <></>
             )       
