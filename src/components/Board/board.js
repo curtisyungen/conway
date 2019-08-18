@@ -69,7 +69,7 @@ class Board extends Component {
             let nRow = [];
             for (var j = 0; j < numCols; j++) {
                 let nCell = {
-                    row: i,
+                    row: i, 
                     col: j,
                     val: false,
                 }
@@ -99,7 +99,12 @@ class Board extends Component {
     // Called when Start button is clicked
     startGame = (event) => {
         event.preventDefault();
-        this.getValues();
+
+        let timer = setInterval(this.getValues(), 1000);
+
+        this.setState({
+            timer: timer,
+        });
     }
 
     // Reads cell values from board
