@@ -24,16 +24,18 @@ class Cell extends Component {
     toggleCell = () => {
         this.setState({
             val: !this.state.val,
+        }, () => {
+            this.updateBoard();
         });
+    }
+
+    updateBoard = () => {
+        this.props.updateBoard(this.state.row, this.state.col, this.state.val);
     }
 
     render() { 
         return (
-            this.state.row ? (
-                <div className={`cell fill-${this.state.val}`} onClick={this.toggleCell}></div>     
-            ) : (
-                <></>
-            )       
+            <div className={`cell fill-${this.state.val}`} onClick={this.toggleCell}></div>       
         )
     }
 }

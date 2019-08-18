@@ -9,9 +9,11 @@ class Row extends Component {
                 {this.props.row && this.props.row.length > 0 ? (
                     this.props.row.map(cell => (
                         <Cell 
+                            key={`${cell.row}${cell.col}${cell.val}`}
                             row={cell.row}
                             col={cell.col}
                             val={cell.val}
+                            updateBoard={this.props.updateBoard}
                         />
                     ))
                 ) : (
