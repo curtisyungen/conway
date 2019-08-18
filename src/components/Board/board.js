@@ -256,16 +256,22 @@ class Board extends Component {
                     </form>
 
                     <button
-                        className="btn btn-primary startBtn"
+                        className="btn btn-primary startBtn formBtn"
                         onClick={this.startGame}
                     >
                         Start
                     </button>
                     <button
-                        className="btn btn-primary startBtn"
-                        onClick={(event) => {event.preventDefault(); this.getCells();}}
+                        className="btn btn-success formBtn"
+                        onClick={(event) => { event.preventDefault(); this.getCells(); }}
                     >
                         Update
+                    </button>
+                    <button
+                        className="btn btn-danger formBtn"
+                        onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                    >
+                        Clear
                     </button>
                 </div>
             ) : (
