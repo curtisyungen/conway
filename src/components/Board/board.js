@@ -17,8 +17,8 @@ class Board extends Component {
 
     componentDidMount = () => {
         this.setState({
-            numRows: 3,
-            numCols: 3,
+            numRows: 10,
+            numCols: 10,
         }, () => {
             this.getCells();
         });
@@ -38,7 +38,6 @@ class Board extends Component {
         let numCols = parseInt(this.state.numCols);
 
         let board = [];
-        let nextBoard = [];
         for (var i = 0; i < numRows; i++) {
 
             let row = [];
@@ -51,13 +50,37 @@ class Board extends Component {
 
                 row.push(cell);
             }
-
             board.push(row);
-            nextBoard.push(row);
         }
 
         this.setState({
             board: board,
+        }, () => {
+            this.resetNextBoard();
+        });
+    }
+
+    resetNextBoard = () => {
+        let numRows = parseInt(this.state.numRows);
+        let numCols = parseInt(this.state.numCols);
+
+        let nextBoard = [];
+        for (var i = 0; i < numRows; i++) {
+            let nRow = [];
+            for (var j = 0; j < numCols; j++) {
+                let nCell = {
+                    row: i, 
+                    col: j,
+                    val: false,
+                }
+
+                nRow.push(nCell);
+            }
+
+            nextBoard.push(nRow);
+        }
+
+        this.setState({
             nextBoard: nextBoard,
         });
     }
@@ -76,7 +99,12 @@ class Board extends Component {
     // Called when Start button is clicked
     startGame = (event) => {
         event.preventDefault();
-        this.getValues();
+
+        let timer = setInterval(this.getValues(), 1000);
+
+        this.setState({
+            timer: timer,
+        });
     }
 
     // Reads cell values from board
@@ -182,9 +210,9 @@ class Board extends Component {
         nextBoard[row][col].val = result;
 
         this.setState({
-            nextBoard: nextBoard,
+            board: nextBoard,
         }, () => {
-            console.log("Next Board", nextBoard);
+            this.resetNextBoard();
         });
     }
 
@@ -210,7 +238,7 @@ class Board extends Component {
                                 className="form-control boardSize"
                                 id="boardHeight"
                                 onChange={this.handleInputChange}
-                                defaultValue={3}
+                                defaultValue={10}
                             />
                         </div>
                         <div className="form-group">
@@ -222,7 +250,7 @@ class Board extends Component {
                                 className="form-control boardSize"
                                 id="boardWidth"
                                 onChange={this.handleInputChange}
-                                defaultValue={3}
+                                defaultValue={10}
                             />
                         </div>
                     </form>
@@ -232,6 +260,12 @@ class Board extends Component {
                         onClick={this.startGame}
                     >
                         Start
+                    </button>
+                    <button
+                        className="btn btn-primary startBtn"
+                        onClick={(event) => {event.preventDefault(); this.getCells();}}
+                    >
+                        Update
                     </button>
                 </div>
             ) : (
