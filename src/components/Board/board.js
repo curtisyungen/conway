@@ -252,7 +252,7 @@ class Board extends Component {
     render() {
         return (
             this.state.board && this.state.board.length > 0 ? (
-                <span>
+                <div className="main">
 
                     {/* BOARD */}
 
@@ -279,7 +279,7 @@ class Board extends Component {
                                 id="boardHeight"
                                 onChange={this.handleInputChange}
                                 defaultValue={10}
-                                maxValue={10}
+                                max={10}
                             />
                         </div>
                         <div className="form-group group-inline-block">
@@ -292,7 +292,7 @@ class Board extends Component {
                                 id="boardWidth"
                                 onChange={this.handleInputChange}
                                 defaultValue={10}
-                                maxValue={10}
+                                max={10}
                             />
                         </div>
                     </form>
@@ -325,7 +325,7 @@ class Board extends Component {
                             Clear
                         </button>
                     </div>
-                </span>
+                </div>
             ) : (
                     <></>
                 )
