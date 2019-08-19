@@ -1,4 +1,9 @@
 ## Conway's Game of Life
+by Curtis Yungen
+
+August 2019
+
+Check out the project here: https://conway-cjy.herokuapp.com.
 
 ### Rules:
 * Any live cell with fewer than two live neighbours dies, as if by underpopulation.
