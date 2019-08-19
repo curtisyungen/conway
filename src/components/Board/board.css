@@ -30,6 +30,7 @@
 }
 
 .row {
+    flex-wrap: none !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
