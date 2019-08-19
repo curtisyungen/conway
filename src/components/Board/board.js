@@ -25,10 +25,6 @@ class Board extends Component {
         });
     }
 
-    componentWillUnmount = () => {
-        clearInterval(this.state.interval);
-    }
-
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
@@ -102,19 +98,20 @@ class Board extends Component {
     }
 
     // Called when Start button is clicked
-    startGame = (event) => {
+    startInterval = (event) => {
         event.preventDefault();
         let interval = setInterval(this.getValues, 1000);
-
-        this.setState({
-            interval: interval,
-        });
+    }
+    
+    // Called when Next button is clicked
+    nextFrame = (event) => {
+        event.preventDefault();
+        this.getValues();
     }
 
     // Reads cell values from board
     // Runs Conway on each cell
     getValues = () => {
-        console.log("get values");
         let board = this.state.board;
 
         let row, col;
@@ -262,9 +259,15 @@ class Board extends Component {
 
                     <button
                         className="btn btn-primary startBtn formBtn"
-                        onClick={this.startGame}
+                        onClick={this.startInterval}
                     >
                         Start
+                    </button>
+                    <button
+                        className="btn btn-dark formBtn"
+                        onClick={this.nextFrame}
+                    >
+                        Next
                     </button>
                     <button
                         className="btn btn-success formBtn"
