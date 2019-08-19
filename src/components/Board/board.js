@@ -62,6 +62,10 @@ class Board extends Component {
         });
     }
 
+    getRandom = () => {
+        alert("Button not yet operable.");
+    }
+
     // Resets the next frame board to all blank cells
     resetNextBoard = () => {
         let numRows = parseInt(this.state.numRows);
@@ -122,6 +126,12 @@ class Board extends Component {
         this.setState({
             interval: interval,
         });
+    }
+
+    // Called when the Prev button is clicked
+    prevFrame = (event) => {
+        event.preventDefault();
+        alert("Button not yet operable.");
     }
 
     // Called when Next button is clicked
@@ -301,6 +311,12 @@ class Board extends Component {
 
                     <div className="formBtns">
                         <button
+                            className="btn btn-dark btn-sm formBtn"
+                            onClick={this.prevFrame}
+                        >
+                            Prev
+                        </button>
+                        <button
                             className="btn btn-primary btn-sm startBtn formBtn"
                             onClick={this.startInterval}
                         >
@@ -323,6 +339,12 @@ class Board extends Component {
                             onClick={(event) => { event.preventDefault(); this.getCells(); }}
                         >
                             Clear
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.getRandom(); }}
+                        >
+                            Random
                         </button>
                     </div>
                 </div>
