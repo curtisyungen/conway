@@ -5,13 +5,12 @@
 }
 
 .boardForm {
-    display: flex;
-    flex-direction: row;
+    text-align: center;
 }
 
 .boardSize {
     display: inline-block;
-    height: 30px;
+    height: 26px;
     margin: 5px;
     width: 50px;
 }
