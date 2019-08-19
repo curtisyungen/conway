@@ -84,6 +84,21 @@ class Board extends Component {
         this.setState({
             nextBoard: nextBoard,
         });
+
+        // Get number of live cells on board
+        let board = this.state.board;
+        let count = 0;
+        for (var r in board) {
+            for (var c in board) {
+                if (board[r][c].val === true) {
+                    count += 1;
+                }
+            }
+        }
+
+        if (count === 0) {
+            clearInterval(interval);
+        }
     }
 
     // Updates a cell's value when clicked
@@ -100,7 +115,7 @@ class Board extends Component {
     // Called when Start button is clicked
     startInterval = (event) => {
         event.preventDefault();
-        let interval = setInterval(this.getValues, 1000);
+        let interval = setInterval(this.getValues(), 1000);
     }
     
     // Called when Next button is clicked
