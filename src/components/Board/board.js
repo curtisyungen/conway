@@ -12,6 +12,7 @@ class Board extends Component {
             nextBoard: null,
             numRows: null,
             numCols: null,
+            interval: null,
         }
     }
 
@@ -22,6 +23,10 @@ class Board extends Component {
         }, () => {
             this.getCells();
         });
+    }
+
+    componentWillUnmount = () => {
+        clearInterval(this.state.interval);
     }
 
     handleInputChange = (event) => {
@@ -99,11 +104,10 @@ class Board extends Component {
     // Called when Start button is clicked
     startGame = (event) => {
         event.preventDefault();
-
-        let timer = setInterval(this.getValues(), 1000);
+        let interval = setInterval(this.getValues, 1000);
 
         this.setState({
-            timer: timer,
+            interval: interval,
         });
     }
 
