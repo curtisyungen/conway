@@ -299,25 +299,25 @@ class Board extends Component {
 
                     <div className="formBtns">
                         <button
-                            className="btn btn-primary startBtn formBtn"
+                            className="btn btn-primary btn-sm startBtn formBtn"
                             onClick={this.startInterval}
                         >
                             Start
                         </button>
                         <button
-                            className="btn btn-dark formBtn"
+                            className="btn btn-dark btn-sm formBtn"
                             onClick={this.nextFrame}
                         >
                             Next
                         </button>
                         <button
-                            className="btn btn-success formBtn"
+                            className="btn btn-success btn-sm formBtn"
                             onClick={(event) => { event.preventDefault(); this.getCells(); }}
                         >
                             Update
                         </button>
                         <button
-                            className="btn btn-danger formBtn"
+                            className="btn btn-danger btn-sm formBtn"
                             onClick={(event) => { event.preventDefault(); this.getCells(); }}
                         >
                             Clear
