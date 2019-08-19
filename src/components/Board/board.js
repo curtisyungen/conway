@@ -114,6 +114,7 @@ class Board extends Component {
     // Reads cell values from board
     // Runs Conway on each cell
     getValues = () => {
+        console.log("get values");
         let board = this.state.board;
 
         let row, col;
