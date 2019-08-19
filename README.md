@@ -1,5 +1,5 @@
-## Conway's Game of Life
-by Curtis Yungen
+# Conway's Game of Life
+**by Curtis Yungen**
 
 August 2019
 
