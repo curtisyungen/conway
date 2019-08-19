@@ -97,7 +97,7 @@ class Board extends Component {
         }
 
         if (count === 0) {
-            clearInterval(interval);
+            clearInterval(this.state.interval);
         }
     }
 
@@ -116,6 +116,10 @@ class Board extends Component {
     startInterval = (event) => {
         event.preventDefault();
         let interval = setInterval(this.getValues(), 1000);
+
+        this.setState({
+            interval: interval,
+        });
     }
     
     // Called when Next button is clicked
