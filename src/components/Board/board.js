@@ -269,7 +269,7 @@ class Board extends Component {
                     {/* ROW & COL ADJUSTMENT */}
 
                     <form className="boardForm">
-                        <div className="form-group">
+                        <div className="form-group group-inline-block">
                             <span>Rows</span>
                             <input
                                 autoComplete="off"
@@ -282,7 +282,7 @@ class Board extends Component {
                                 maxValue={10}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group group-inline-block">
                             <span>Col</span>
                             <input
                                 autoComplete="off"

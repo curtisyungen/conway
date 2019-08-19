@@ -1,4 +1,5 @@
 .board {
+    border: 1px solid black;
     margin: 10px auto;
     padding: 10px;
     width: 300px;
@@ -22,6 +23,10 @@
 
 .formBtns {
     text-align: center;
+}
+
+.group-inline-block {
+    display: inline-block;
 }
 
 .row {
