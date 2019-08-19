@@ -34,6 +34,15 @@ class Board extends Component {
         });
     }
 
+    setSize = (height, width) => {
+        this.setState({
+            height: height,
+            width: width,
+        }, () => {
+            this.getCells();
+        });
+    }
+
     // Generates a new board of all empty cells
     getCells = () => {
         let numRows = parseInt(this.state.numRows);
@@ -329,12 +338,6 @@ class Board extends Component {
                             Next
                         </button>
                         <button
-                            className="btn btn-success btn-sm formBtn"
-                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
-                        >
-                            Update
-                        </button>
-                        <button
                             className="btn btn-danger btn-sm formBtn"
                             onClick={(event) => { event.preventDefault(); this.getCells(); }}
                         >
@@ -345,6 +348,24 @@ class Board extends Component {
                             onClick={(event) => { event.preventDefault(); this.getRandom(); }}
                         >
                             Random
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm formBtn"
+                            onClick={(event) => {event.preventDefault(); this.setSize(3, 3);}}
+                        >
+                            Small
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm formBtn"
+                            onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}
+                        >
+                            Medium
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm formBtn"
+                            onClick={(event) => {event.preventDefault(); this.setSize(25, 25);}}
+                        >
+                            Large
                         </button>
                     </div>
                 </div>
