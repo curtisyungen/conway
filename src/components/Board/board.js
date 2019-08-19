@@ -25,6 +25,7 @@ class Board extends Component {
         });
     }
 
+    // Handles changes to input form (rows & columns)
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
@@ -33,7 +34,7 @@ class Board extends Component {
         });
     }
 
-    // Generates a new board
+    // Generates a new board of all empty cells
     getCells = () => {
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
@@ -61,6 +62,7 @@ class Board extends Component {
         });
     }
 
+    // Resets the next frame board to all blank cells
     resetNextBoard = () => {
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
@@ -70,7 +72,7 @@ class Board extends Component {
             let nRow = [];
             for (var j = 0; j < numCols; j++) {
                 let nCell = {
-                    row: i, 
+                    row: i,
                     col: j,
                     val: false,
                 }
@@ -121,7 +123,7 @@ class Board extends Component {
             interval: interval,
         });
     }
-    
+
     // Called when Next button is clicked
     nextFrame = (event) => {
         event.preventDefault();
@@ -149,39 +151,48 @@ class Board extends Component {
                 let prevCol = col - 1;
                 let nextCol = col + 1;
 
-                // Cell values
+                // Cell values in 3x3 grid with current cell in center
                 let topLeft, topMid, topRight, midLeft, currVal, midRight, botLeft, botMid, botRight;
 
+                // Top left
                 if (prevRow >= 0 && prevCol >= 0) {
                     topLeft = board[prevRow][prevCol].val;
                 }
 
+                // Top mid
                 if (prevRow >= 0) {
                     topMid = board[prevRow][col].val;
                 }
 
+                // Top right
                 if (prevRow >= 0 && nextCol < cols) {
                     topRight = board[prevRow][nextCol].val;
                 }
 
+                // Mid left
                 if (prevCol >= 0) {
                     midLeft = board[row][prevCol].val;
                 }
 
+                // Mid center (current)
                 currVal = board[row][col].val;
 
+                // Mid right
                 if (nextCol < cols) {
                     midRight = board[row][nextCol].val;
                 }
 
+                // Bottom left
                 if (nextRow < rows && prevCol >= 0) {
                     botLeft = board[nextRow][prevCol].val;
                 }
 
+                // Bottom mid
                 if (nextRow < rows) {
                     botMid = board[nextRow][col].val;
                 }
 
+                // Bottom right
                 if (nextRow < rows && nextCol < cols) {
                     botRight = board[nextRow][nextCol].val;
                 }
@@ -191,6 +202,7 @@ class Board extends Component {
         }
     }
 
+    // Applies the Conway algorithm to each cell to determine if it will live or die
     conway = (row, col, currVal, valArray) => {
 
         let result;
@@ -240,14 +252,21 @@ class Board extends Component {
     render() {
         return (
             this.state.board && this.state.board.length > 0 ? (
-                <div className="board">
-                    {this.state.board.map(row => (
-                        <Row
-                            key={Math.random() * 100000}
-                            row={row}
-                            updateBoard={this.updateBoard}
-                        />
-                    ))}
+                <span>
+
+                    {/* BOARD */}
+
+                    <div className="board">
+                        {this.state.board.map(row => (
+                            <Row
+                                key={Math.random() * 100000}
+                                row={row}
+                                updateBoard={this.updateBoard}
+                            />
+                        ))}
+                    </div>
+
+                    {/* ROW & COL ADJUSTMENT */}
 
                     <form className="boardForm">
                         <div className="form-group">
@@ -276,31 +295,35 @@ class Board extends Component {
                         </div>
                     </form>
 
-                    <button
-                        className="btn btn-primary startBtn formBtn"
-                        onClick={this.startInterval}
-                    >
-                        Start
-                    </button>
-                    <button
-                        className="btn btn-dark formBtn"
-                        onClick={this.nextFrame}
-                    >
-                        Next
-                    </button>
-                    <button
-                        className="btn btn-success formBtn"
-                        onClick={(event) => { event.preventDefault(); this.getCells(); }}
-                    >
-                        Update
-                    </button>
-                    <button
-                        className="btn btn-danger formBtn"
-                        onClick={(event) => { event.preventDefault(); this.getCells(); }}
-                    >
-                        Clear
-                    </button>
-                </div>
+                    {/* CONTROL BUTTONS */}
+
+                    <div className="formBtns">
+                        <button
+                            className="btn btn-primary startBtn formBtn"
+                            onClick={this.startInterval}
+                        >
+                            Start
+                        </button>
+                        <button
+                            className="btn btn-dark formBtn"
+                            onClick={this.nextFrame}
+                        >
+                            Next
+                        </button>
+                        <button
+                            className="btn btn-success formBtn"
+                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                        >
+                            Update
+                        </button>
+                        <button
+                            className="btn btn-danger formBtn"
+                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                        >
+                            Clear
+                        </button>
+                    </div>
+                </span>
             ) : (
                     <></>
                 )
