@@ -34,10 +34,10 @@ class Board extends Component {
         });
     }
 
-    setSize = (height, width) => {
+    setSize = (rows, cols) => {
         this.setState({
-            height: height,
-            width: width,
+            numRows: rows,
+            numCols: cols,
         }, () => {
             this.getCells();
         });
@@ -350,19 +350,19 @@ class Board extends Component {
                             Random
                         </button>
                         <button
-                            className="btn btn-danger btn-sm formBtn"
+                            className="btn btn-outline-light btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(3, 3);}}
                         >
                             Small
                         </button>
                         <button
-                            className="btn btn-danger btn-sm formBtn"
+                            className="btn btn-outline-light btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}
                         >
                             Medium
                         </button>
                         <button
-                            className="btn btn-danger btn-sm formBtn"
+                            className="btn btn-outline-light btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(25, 25);}}
                         >
                             Large
