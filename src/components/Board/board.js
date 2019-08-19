@@ -25,15 +25,6 @@ class Board extends Component {
         });
     }
 
-    // Handles changes to input form (rows & columns)
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]: value,
-        });
-    }
-
     setSize = (rows, cols) => {
         this.setState({
             numRows: rows,
@@ -285,37 +276,6 @@ class Board extends Component {
                         ))}
                     </div>
 
-                    {/* ROW & COL ADJUSTMENT */}
-
-                    <form className="boardForm">
-                        <div className="form-group group-inline-block">
-                            <span>Rows</span>
-                            <input
-                                autoComplete="off"
-                                name="numRows"
-                                type="text"
-                                className="form-control boardSize"
-                                id="boardHeight"
-                                onChange={this.handleInputChange}
-                                defaultValue={10}
-                                max={25}
-                            />
-                        </div>
-                        <div className="form-group group-inline-block">
-                            <span>Col</span>
-                            <input
-                                autoComplete="off"
-                                name="numCols"
-                                type="text"
-                                className="form-control boardSize"
-                                id="boardWidth"
-                                onChange={this.handleInputChange}
-                                defaultValue={10}
-                                max={25}
-                            />
-                        </div>
-                    </form>
-
                     {/* CONTROL BUTTONS */}
 
                     <div className="formBtns">
@@ -350,19 +310,19 @@ class Board extends Component {
                             Random
                         </button>
                         <button
-                            className="btn btn-outline-light btn-sm formBtn"
+                            className="btn btn-outline-dark btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(3, 3);}}
                         >
                             Small
                         </button>
                         <button
-                            className="btn btn-outline-light btn-sm formBtn"
+                            className="btn btn-outline-dark btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}
                         >
                             Medium
                         </button>
                         <button
-                            className="btn btn-outline-light btn-sm formBtn"
+                            className="btn btn-outline-dark btn-sm formBtn"
                             onClick={(event) => {event.preventDefault(); this.setSize(25, 25);}}
                         >
                             Large
