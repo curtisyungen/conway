@@ -212,6 +212,10 @@ class Board extends Component {
         }
     }
 
+    getPattern = (pattern) => {
+        console.log(pattern);
+    }
+
     // Applies the Conway algorithm to each cell to determine if it will live or die
     conway = (row, col, currVal, valArray) => {
 
@@ -278,7 +282,7 @@ class Board extends Component {
 
                     {/* CONTROL BUTTONS */}
 
-                    <div className="formBtns">
+                    <div className="btnRow formBtns text-center">
                         <button
                             className="btn btn-dark btn-sm formBtn"
                             onClick={this.prevFrame}
@@ -297,37 +301,51 @@ class Board extends Component {
                         >
                             Next
                         </button>
+
+                    </div>
+
+                    {/* SIZE BUTTONS */}
+
+                    <div className="btnRow sizeBtns text-center">
                         <button
-                            className="btn btn-danger btn-sm formBtn"
-                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
                         >
-                            Clear
+                            Small
                         </button>
+                        <button
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
+                        >
+                            Medium
+                        </button>
+                        <button
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
+                        >
+                            Large
+                        </button>
+                    </div>
+
+                    {/* PATTERN BUTTONS */}
+
+                    <div className="btnRow patternBtns text-center">
                         <button
                             className="btn btn-danger btn-sm formBtn"
                             onClick={(event) => { event.preventDefault(); this.getRandom(); }}
                         >
                             Random
                         </button>
-                        <button
-                            className="btn btn-outline-dark btn-sm formBtn"
-                            onClick={(event) => {event.preventDefault(); this.setSize(3, 3);}}
-                        >
-                            Small
-                        </button>
-                        <button
-                            className="btn btn-outline-dark btn-sm formBtn"
-                            onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}
-                        >
-                            Medium
-                        </button>
-                        <button
-                            className="btn btn-outline-dark btn-sm formBtn"
-                            onClick={(event) => {event.preventDefault(); this.setSize(25, 25);}}
-                        >
-                            Large
-                        </button>
                     </div>
+
+                    <div className="patternList">
+                        <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}/>
+                        {/* <img src={require("")} alt="pattern2" onClick={this.getPattern.bind(null, "pattern2")}/>
+                        <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
+                        <img src={require("")} alt="pattern4" onClick={this.getPattern.bind(null, "pattern4")}/>
+                        <img src={require("")} alt="pattern5" onClick={this.getPattern.bind(null, "pattern5")}/> */}
+                    </div>
+
                 </div>
             ) : (
                     <></>
