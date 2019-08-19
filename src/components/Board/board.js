@@ -289,7 +289,7 @@ class Board extends Component {
                                 id="boardHeight"
                                 onChange={this.handleInputChange}
                                 defaultValue={10}
-                                max={10}
+                                max={25}
                             />
                         </div>
                         <div className="form-group group-inline-block">
@@ -302,7 +302,7 @@ class Board extends Component {
                                 id="boardWidth"
                                 onChange={this.handleInputChange}
                                 defaultValue={10}
-                                max={10}
+                                max={25}
                             />
                         </div>
                     </form>
