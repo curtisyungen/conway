@@ -293,6 +293,7 @@ class Board extends Component {
             case "4": board = getPatterns.getPattern4(); break;
             case "5": board = getPatterns.getPattern5(); break;
             case "8": board = getPatterns.getPattern8(); break;
+            case "9": board = getPatterns.getPattern9(); break;
             default: board = getPatterns.getPattern1();
         }
 
@@ -477,6 +478,7 @@ class Board extends Component {
                         <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "4")} />
                         <img className="pattern" src={require("../../images/pattern5.png")} alt="pattern5" onClick={this.getPattern.bind(null, "5")} />
                         <img className="pattern" src={require("../../images/pattern8.png")} alt="pattern8" onClick={this.getPattern.bind(null, "8")} />
+                        <img className="pattern" src={require("../../images/pattern9.png")} alt="pattern9" onClick={this.getPattern.bind(null, "9")} />
                     </div>
 
                     {/* THEMES */}
