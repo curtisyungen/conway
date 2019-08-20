@@ -396,18 +396,21 @@ class Board extends Component {
                             <button
                                 className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === SLOW}`}
                                 onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
+                                disabled={this.state.timer !== null}
                             >
                                 Slow
                             </button>
                             <button
                                 className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === MED}`}
                                 onClick={(event) => { event.preventDefault(); this.setSpeed(MED); }}
+                                disabled={this.state.timer !== null}
                             >
                                 Normal
                             </button>
                             <button
                                 className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === FAST}`}
                                 onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
+                                disabled={this.state.timer !== null}
                             >
                                 Fast
                             </button>
@@ -415,16 +418,28 @@ class Board extends Component {
                             <button
                                 className="btn btn-danger btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.getRandom(); }}
+                                disabled={this.state.timer !== null}
                             >
                                 Random
                             </button>
                             <button
                                 className="btn btn-danger btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                                disabled={this.state.timer !== null}
                             >
                                 Clear
                             </button>
                         </div>
+                    </div>
+
+                    {/* THEMES */}
+
+                    <div className="themeList text-center">
+                        <div className="theme theme-light"></div>
+                        <div className="theme theme-dark"></div>
+                        <div className="theme theme-blue"></div>
+                        <div className="theme theme-green"></div>
+                        <div className="theme theme-wild"></div>
                     </div>
 
                     {/* PATTERN LIST */}

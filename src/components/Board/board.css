@@ -61,3 +61,45 @@
 .size-true, .speed-true {
     background: rgb(191, 191, 242);
 }
+
+.theme {
+    display: inline-block;
+    height: 50px;
+    margin-right: 3px;
+    width: 50px;
+}
+
+.theme:last-child {
+    margin-right: 0px;
+}
+
+.theme-light {
+    border: 1px solid black;
+    background: #fff;
+}
+
+.theme-dark {
+    border: 1px solid black;
+    background: gold;
+}
+
+.theme-blue {
+    border: 1px solid black;
+    background: rgb(0, 132, 255);
+}
+
+.theme-green {
+    border: 1px solid black;
+    background: lightgreen;
+}
+
+.theme-wild {
+    border: 1px solid black;
+    background: rgb(172, 14, 172);
+}
+
+@media only screen and (max-width: 990px) {
+    .patternList {
+        display: none;
+    }
+}
