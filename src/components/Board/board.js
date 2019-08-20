@@ -13,7 +13,7 @@ class Board extends Component {
             numRows: null,
             numCols: null,
             timer: null,
-            count: false,
+            count: 0,
             speed: null,
         }
     }
@@ -22,10 +22,16 @@ class Board extends Component {
         this.setState({
             numRows: 10,
             numCols: 10,
-            speed: 1000,
+            speed: 500,
         }, () => {
             this.getCells();
         });
+    }
+
+    componentDidUpdate = (prevState) => {
+        if (this.state.timer && JSON.stringify(prevState.board) === JSON.stringify(this.state.nextBoard)) {
+            this.stopInterval();
+        }
     }
 
     componentWillUnmount = () => {
@@ -131,10 +137,16 @@ class Board extends Component {
     // Called when Start button is clicked
     startInterval = (event) => {
         event.preventDefault();
+
+        let count = 0;
+
+        this.setState({
+            count: count,
+        });
         
         let timer = setInterval(() => {
             let count = this.state.count;
-            count = !count;
+            count = this.state.count + 1;
 
             this.setState({
                 count: count,
@@ -296,6 +308,11 @@ class Board extends Component {
                         ))}
                     </div>
 
+                    {/* COUNTER */}
+                    <div className="counter text-center">
+                        {this.state.count}
+                    </div>
+
                     {/* CONTROL BUTTONS */}
 
                     <div className="btnRow formBtns text-center">
@@ -334,19 +351,19 @@ class Board extends Component {
 
                     <div className="btnRow sizeBtns text-center">
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
                             onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
                         >
                             Small
                         </button>
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
                             onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
                         >
                             Medium
                         </button>
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
                             onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
                         >
                             Large
@@ -357,19 +374,19 @@ class Board extends Component {
 
                     <div className="btnRow sizeBtns text-center">
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 1000}`}
                             onClick={(event) => { event.preventDefault(); this.setSpeed(1000); }}
                         >
                             Slow
                         </button>
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 500}`}
                             onClick={(event) => { event.preventDefault(); this.setSpeed(500); }}
                         >
                             Normal
                         </button>
                         <button
-                            className="btn btn-outline-dark btn-sm formBtn"
+                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 250}`}
                             onClick={(event) => { event.preventDefault(); this.setSpeed(250); }}
                         >
                             Fast
@@ -384,6 +401,12 @@ class Board extends Component {
                             onClick={(event) => { event.preventDefault(); this.getRandom(); }}
                         >
                             Random
+                        </button>
+                        <button
+                            className="btn btn-danger btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                        >
+                            Clear
                         </button>
                     </div>
 

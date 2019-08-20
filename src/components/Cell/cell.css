@@ -1,5 +1,5 @@
 .cell {
-    border: 1px solid black;
+    border: 1px solid rgb(100, 100, 100);
     cursor: pointer;
     display: inline-block;
     height: 10px;
@@ -13,5 +13,5 @@
 }
 
 .fill-true {
-    background: lightgray;
+    background: rgb(71, 255, 71);
 }
