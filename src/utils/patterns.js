@@ -57,5 +57,24 @@ module.exports = {
         pattern[11][12].val = true;
 
         return pattern;
-    }
+    },
+
+    getPattern5() {
+        let pattern = this.getPattern1();
+
+        pattern[9][18].val = true;
+        pattern[9][19].val = true;
+        pattern[10][18].val = true;
+        pattern[10][19].val = true;
+        pattern[11][19].val = true;
+        pattern[12][18].val = true;
+        pattern[12][19].val = true;
+        pattern[13][19].val = true;
+        pattern[14][18].val = true;
+        pattern[14][19].val = true;
+        pattern[15][18].val = true;
+        pattern[15][19].val = true;
+
+        return pattern;
+    },
 }
