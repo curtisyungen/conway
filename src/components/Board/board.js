@@ -266,6 +266,7 @@ class Board extends Component {
         switch(pattern) {
             case "1": board = getPatterns.getPattern1(); break;
             case "2": board = getPatterns.getPattern2(); break;
+            case "3": board = getPatterns.getPattern3(); break;
             default: board = getPatterns.getPattern1();
         }
 
@@ -446,7 +447,7 @@ class Board extends Component {
                     <div className="patternList">
                         <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={this.getPattern.bind(null, "1")} />
                         <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
-                        <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "2")} />
+                        <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "3")} />
                         <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "2")} />
                         {/* <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} /> */}
                     </div>
