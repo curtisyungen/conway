@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Row from "../Row/row";
 import "./board.css";
 
+import getPatterns from "../../utils/patterns";
+
 class Board extends Component {
 
     constructor(props) {
@@ -19,6 +21,7 @@ class Board extends Component {
     }
 
     componentDidMount = () => {
+
         this.setState({
             numRows: 10,
             numCols: 10,
@@ -55,6 +58,7 @@ class Board extends Component {
 
     // Generates a new board of all empty cells
     getCells = () => {
+        
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
 
@@ -241,7 +245,17 @@ class Board extends Component {
     }
 
     getPattern = (pattern) => {
-        console.log(pattern);
+        let board;
+
+        if (pattern = "2") {
+            board = getPatterns.getPattern2();
+        }
+
+        this.setState({
+            board: board,
+        }, () => {
+            
+        });
     }
 
     // Applies the Conway algorithm to each cell to determine if it will live or die
@@ -412,8 +426,8 @@ class Board extends Component {
 
                     <div className="patternList">
                         <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }} />
-                        {/* <img src={require("")} alt="pattern2" onClick={this.getPattern.bind(null, "pattern2")}/>
-                        <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
+                        <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")}/>
+                        {/* <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
                         <img src={require("")} alt="pattern4" onClick={this.getPattern.bind(null, "pattern4")}/>
                         <img src={require("")} alt="pattern5" onClick={this.getPattern.bind(null, "pattern5")}/> */}
                     </div>
