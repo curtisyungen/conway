@@ -106,17 +106,17 @@
 }
 
 .theme-blue {
-    border: 10px solid rgb(242, 242, 242);
+    border: 10px solid rgb(234, 245, 248);
     background: steelblue;
 }
 
 .theme-green {
-    border: 10px solid black;
+    border: 10px solid rgb(62, 177, 62);
     background: lightgreen;
 }
 
 .theme-wild {
-    border: 10px solid black;
+    border: 10px solid lightgray;
     background: rgb(172, 14, 172);
 }
 
