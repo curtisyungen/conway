@@ -1,12 +1,12 @@
 module.exports = {
 
-    getPattern2() {
-        let pattern2 = [];
+    getPattern1() {
+        let pattern = [];
 
-        for (var i=0; i<10; i++) {
+        for (var i=0; i<25; i++) {
             let row = [];
 
-            for (var j=0; j<10; j++) {
+            for (var j=0; j<25; j++) {
                 let cell = {
                     row: i,
                     col: j,
@@ -16,18 +16,40 @@ module.exports = {
                 row.push(cell);
             }
 
-            pattern2.push(row);
+            pattern.push(row);
         }
 
-        pattern2[3][2].val = true;
-        pattern2[3][3].val = true;
-        pattern2[4][2].val = true;
-        pattern2[4][3].val = true;
-        pattern2[5][3].val = true;
-        pattern2[6][3].val = true;
-        pattern2[7][3].val = true;
+        return pattern;
+    },
 
-        return pattern2;
+    getPattern2() {
+        let pattern = [];
+
+        for (var i=0; i<25; i++) {
+            let row = [];
+
+            for (var j=0; j<25; j++) {
+                let cell = {
+                    row: i,
+                    col: j,
+                    val: false,
+                }
+
+                row.push(cell);
+            }
+
+            pattern.push(row);
+        }
+
+        pattern[3][2].val = true;
+        pattern[3][3].val = true;
+        pattern[4][2].val = true;
+        pattern[4][3].val = true;
+        pattern[5][3].val = true;
+        pattern[6][3].val = true;
+        pattern[7][3].val = true;
+
+        return pattern;
     }
 
 }

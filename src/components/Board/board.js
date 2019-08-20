@@ -86,6 +86,7 @@ class Board extends Component {
 
         this.setState({
             board: board,
+            counter: 0,
         }, () => {
             this.resetNextBoard();
         });
@@ -253,14 +254,14 @@ class Board extends Component {
     getPattern = (pattern) => {
         let board;
 
-        if (pattern = "2") {
-            board = getPatterns.getPattern2();
+        switch(pattern) {
+            case "1": board = getPatterns.getPattern1(); break;
+            case "2": board = getPatterns.getPattern2(); break;
+            default: board = getPatterns.getPattern1();
         }
 
         this.setState({
             board: board,
-        }, () => {
-
         });
     }
 
@@ -429,6 +430,7 @@ class Board extends Component {
                     {/* PATTERN LIST */}
 
                     <div className="patternList">
+                        {/* <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={this.getPattern.bind(null, "1")} /> */}
                         {/* <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} /> */}
                     </div>
 
