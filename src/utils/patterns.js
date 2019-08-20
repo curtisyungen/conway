@@ -89,11 +89,11 @@ module.exports = {
     getPattern8() {
         let pattern = this.getPattern1();
 
-        pattern[0][15].val = true;
-        pattern[24][15].val = true;
+        pattern[0][14].val = true;
+        pattern[24][14].val = true;
 
         for (var i=1; i<24; i++) {
-            pattern[i][14].val = true;
+            pattern[i][13].val = true;
         }
 
         return pattern;
