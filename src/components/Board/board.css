@@ -29,6 +29,7 @@
     cursor: pointer;
     display: inline-block;
     height: 100px;
+    margin-right: 3px;
     width: 100px;
 }
 
