@@ -112,7 +112,7 @@ class Board extends Component {
                 let cell = {
                     row: i,
                     col: j,
-                    val: (Math.random() * 50) < 80,
+                    val: (Math.random() * 50) < 35,
                 }
 
                 row.push(cell);
