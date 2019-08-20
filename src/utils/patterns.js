@@ -98,4 +98,23 @@ module.exports = {
 
         return pattern;
     },
+
+    getPattern9() {
+        let pattern = this.getPattern1();
+
+        pattern[0][1].val = true;
+        pattern[0][2].val = true;
+        pattern[0][3].val = true;
+        pattern[1][0].val = true;
+        pattern[1][5].val = true;
+        pattern[2][0].val = true;
+        pattern[2][5].val = true;
+        pattern[3][0].val = true;
+        pattern[3][5].val = true;
+        pattern[5][1].val = true;
+        pattern[5][2].val = true;
+        pattern[5][3].val = true;
+
+        return pattern;
+    }
 }
