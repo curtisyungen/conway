@@ -23,8 +23,8 @@ class Board extends Component {
     componentDidMount = () => {
 
         this.setState({
-            numRows: 10,
-            numCols: 10,
+            numRows: 25,
+            numCols: 25,
             speed: 500,
         }, () => {
             this.getCells();
@@ -356,7 +356,7 @@ class Board extends Component {
                             </button>
 
                             {/* SIZE BUTTONS */}
-                            <button
+                            {/* <button
                                 className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
                                 onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
                             >
@@ -373,7 +373,7 @@ class Board extends Component {
                                 onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
                             >
                                 Large
-                            </button>
+                            </button> */}
 
                             {/* SPEED BUTTONS */}
 
