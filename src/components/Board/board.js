@@ -4,6 +4,12 @@ import "./board.css";
 
 import getPatterns from "../../utils/patterns";
 
+const DEFAULT_SPEED = 250;
+const DEFAULT_SIZE = 25;
+const FAST = 250;
+const MED = 500;
+const SLOW = 1000;
+
 class Board extends Component {
 
     constructor(props) {
@@ -23,9 +29,9 @@ class Board extends Component {
     componentDidMount = () => {
 
         this.setState({
-            numRows: 25,
-            numCols: 25,
-            speed: 500,
+            numRows: DEFAULT_SIZE,
+            numCols: DEFAULT_SIZE,
+            speed: DEFAULT_SPEED,
         }, () => {
             this.getCells();
         });
@@ -319,11 +325,17 @@ class Board extends Component {
                                 updateBoard={this.updateBoard}
                             />
                         ))}
+                    </div>
 
-                        <div className="controlBar">
+                    {/* CONTROL BAR */}
+                    <div className="controlBar">
 
-                            {/* COUNTER */}
+                        {/* COUNTER */}
+                        <div className="counter">
                             {this.state.count}
+                        </div>
+
+                        <div className="buttonSet1">
 
                             {/* CONTROL BUTTONS */}
                             <button
@@ -332,6 +344,7 @@ class Board extends Component {
                             >
                                 Prev
                             </button>
+
                             {this.state.timer ? (
                                 <button
                                     className="btn btn-danger btn-sm stopBtn formBtn"
@@ -340,13 +353,13 @@ class Board extends Component {
                                     Stop
                                 </button>
                             ) : (
-                                    <button
-                                        className="btn btn-success btn-sm startBtn formBtn"
-                                        onClick={this.startInterval}
-                                    >
-                                        Start
+                                <button
+                                    className="btn btn-success btn-sm startBtn formBtn"
+                                    onClick={this.startInterval}
+                                >
+                                    Start
                                 </button>
-                                )}
+                            )}
 
                             <button
                                 className="btn btn-dark btn-sm formBtn"
@@ -374,24 +387,26 @@ class Board extends Component {
                             >
                                 Large
                             </button> */}
+                        </div>
+
+                        <div className="buttonSet2">
 
                             {/* SPEED BUTTONS */}
-
                             <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 1000}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(1000); }}
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === SLOW}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
                             >
                                 Slow
                             </button>
                             <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 500}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(500); }}
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === MED}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(MED); }}
                             >
                                 Normal
                             </button>
                             <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 250}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(250); }}
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === FAST}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
                             >
                                 Fast
                             </button>
@@ -414,11 +429,7 @@ class Board extends Component {
                     {/* PATTERN LIST */}
 
                     <div className="patternList">
-                        <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }} />
-                        <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
-                        {/* <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
-                        <img src={require("")} alt="pattern4" onClick={this.getPattern.bind(null, "pattern4")}/>
-                        <img src={require("")} alt="pattern5" onClick={this.getPattern.bind(null, "pattern5")}/> */}
+                        {/* <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} /> */}
                     </div>
 
                 </div>
