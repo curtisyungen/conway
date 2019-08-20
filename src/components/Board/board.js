@@ -73,7 +73,6 @@ class Board extends Component {
 
     // Generates a new board of all empty cells
     getCells = () => {
-
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
 
@@ -102,7 +101,31 @@ class Board extends Component {
     }
 
     getRandom = () => {
-        alert("Button not yet operable.");
+        let numRows = parseInt(this.state.numRows);
+        let numCols = parseInt(this.state.numCols);
+
+        let board = [];
+        for (var i = 0; i < numRows; i++) {
+
+            let row = [];
+            for (var j = 0; j < numCols; j++) {
+                let cell = {
+                    row: i,
+                    col: j,
+                    val: (Math.random() * 50) < 80,
+                }
+
+                row.push(cell);
+            }
+            board.push(row);
+        }
+
+        this.setState({
+            board: board,
+            counter: 0,
+        }, () => {
+            this.resetNextBoard();
+        });
     }
 
     // Resets the next frame board to all blank cells
