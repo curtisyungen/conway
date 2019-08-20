@@ -268,6 +268,7 @@ class Board extends Component {
             case "2": board = getPatterns.getPattern2(); break;
             case "3": board = getPatterns.getPattern3(); break;
             case "4": board = getPatterns.getPattern4(); break;
+            case "5": board = getPatterns.getPattern5(); break;
             default: board = getPatterns.getPattern1();
         }
 
