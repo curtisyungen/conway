@@ -4,12 +4,12 @@ import "./board.css";
 
 import getPatterns from "../../utils/patterns";
 
-const DEFAULT_SPEED = 250;
+const DEFAULT_SPEED = 100;
 const DEFAULT_SIZE = 25;
 const DEFAULT_THEME = "light";
-const FAST = 250;
-const MED = 500;
-const SLOW = 1000;
+const FAST = 100;
+const MED = 250;
+const SLOW = 500;
 
 class Board extends Component {
 
