@@ -25,20 +25,20 @@ module.exports = {
     getPattern2() {
         let pattern = this.getPattern1();
 
+        pattern[9][9].val = true;
         pattern[9][10].val = true;
-        pattern[9][11].val = true;
+        pattern[9][14].val = true;
         pattern[9][15].val = true;
-        pattern[9][16].val = true;
+        pattern[10][9].val = true;
         pattern[10][10].val = true;
-        pattern[10][11].val = true;
+        pattern[10][14].val = true;
         pattern[10][15].val = true;
-        pattern[10][16].val = true;
-        pattern[11][11].val = true;
-        pattern[11][15].val = true;
-        pattern[12][11].val = true;
-        pattern[12][15].val = true;
-        pattern[13][11].val = true;
-        pattern[13][15].val = true;
+        pattern[11][10].val = true;
+        pattern[11][14].val = true;
+        pattern[12][10].val = true;
+        pattern[12][14].val = true;
+        pattern[13][10].val = true;
+        pattern[13][14].val = true;
 
         return pattern;
     },
