@@ -8,6 +8,26 @@
     min-width: 20px;
 }
 
+.cell-light {
+    background: black;
+}
+
+.cell-dark {
+    background: gold;
+}
+
+.cell-blue {
+    background: steelblue;
+}
+
+.cell-green {
+    background: lightgreen;
+}
+
+.cell-wild {
+    background: purple;
+}
+
 .fill-false {
     background: white;
 }

@@ -14,6 +14,7 @@ class Row extends Component {
                             col={cell.col}
                             val={cell.val}
                             updateBoard={this.props.updateBoard}
+                            theme={this.props.theme}
                         />
                     ))
                 ) : (
