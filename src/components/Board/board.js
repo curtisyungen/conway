@@ -450,7 +450,7 @@ class Board extends Component {
                         <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
                         <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "3")} />
                         <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "4")} />
-                        {/* <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} /> */}
+                        <img className="pattern" src={require("../../images/pattern5.png")} alt="pattern5" onClick={this.getPattern.bind(null, "5")} />
                     </div>
 
                     {/* THEMES */}
