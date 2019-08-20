@@ -58,7 +58,7 @@ class Board extends Component {
 
     // Generates a new board of all empty cells
     getCells = () => {
-        
+
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
 
@@ -147,7 +147,7 @@ class Board extends Component {
         this.setState({
             count: count,
         });
-        
+
         let timer = setInterval(() => {
             let count = this.state.count;
             count = this.state.count + 1;
@@ -254,7 +254,7 @@ class Board extends Component {
         this.setState({
             board: board,
         }, () => {
-            
+
         });
     }
 
@@ -311,7 +311,6 @@ class Board extends Component {
                 <div className="main">
 
                     {/* BOARD */}
-
                     <div className="board">
                         {this.state.board.map(row => (
                             <Row
@@ -320,113 +319,103 @@ class Board extends Component {
                                 updateBoard={this.updateBoard}
                             />
                         ))}
-                    </div>
 
-                    {/* COUNTER */}
-                    <div className="counter text-center">
-                        {this.state.count}
-                    </div>
+                        <div className="controlBar">
 
-                    {/* CONTROL BUTTONS */}
+                            {/* COUNTER */}
+                            {this.state.count}
 
-                    <div className="btnRow formBtns text-center">
-                        <button
-                            className="btn btn-dark btn-sm formBtn"
-                            onClick={this.prevFrame}
-                        >
-                            Prev
-                        </button>
-                        {this.state.timer ? (
+                            {/* CONTROL BUTTONS */}
                             <button
-                                className="btn btn-danger btn-sm stopBtn formBtn"
-                                onClick={this.stopInterval}
+                                className="btn btn-dark btn-sm formBtn"
+                                onClick={this.prevFrame}
                             >
-                                Stop
+                                Prev
                             </button>
-                        ) : (
+                            {this.state.timer ? (
+                                <button
+                                    className="btn btn-danger btn-sm stopBtn formBtn"
+                                    onClick={this.stopInterval}
+                                >
+                                    Stop
+                                </button>
+                            ) : (
+                                    <button
+                                        className="btn btn-success btn-sm startBtn formBtn"
+                                        onClick={this.startInterval}
+                                    >
+                                        Start
+                                </button>
+                                )}
+
                             <button
-                                className="btn btn-success btn-sm startBtn formBtn"
-                                onClick={this.startInterval}
+                                className="btn btn-dark btn-sm formBtn"
+                                onClick={this.nextFrame}
                             >
-                                Start
+                                Next
                             </button>
-                        )}
-                        
-                        <button
-                            className="btn btn-dark btn-sm formBtn"
-                            onClick={this.nextFrame}
-                        >
-                            Next
-                        </button>
 
+                            {/* SIZE BUTTONS */}
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
+                            >
+                                Small
+                            </button>
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
+                            >
+                                Medium
+                            </button>
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
+                            >
+                                Large
+                            </button>
+
+                            {/* SPEED BUTTONS */}
+
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 1000}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(1000); }}
+                            >
+                                Slow
+                            </button>
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 500}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(500); }}
+                            >
+                                Normal
+                            </button>
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 250}`}
+                                onClick={(event) => { event.preventDefault(); this.setSpeed(250); }}
+                            >
+                                Fast
+                            </button>
+
+                            <button
+                                className="btn btn-danger btn-sm formBtn"
+                                onClick={(event) => { event.preventDefault(); this.getRandom(); }}
+                            >
+                                Random
+                            </button>
+                            <button
+                                className="btn btn-danger btn-sm formBtn"
+                                onClick={(event) => { event.preventDefault(); this.getCells(); }}
+                            >
+                                Clear
+                            </button>
+                        </div>
                     </div>
 
-                    {/* SIZE BUTTONS */}
-
-                    <div className="btnRow sizeBtns text-center">
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
-                            onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
-                        >
-                            Small
-                        </button>
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
-                            onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
-                        >
-                            Medium
-                        </button>
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
-                            onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
-                        >
-                            Large
-                        </button>
-                    </div>
-
-                    {/* SPEED BUTTONS */}
-
-                    <div className="btnRow sizeBtns text-center">
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 1000}`}
-                            onClick={(event) => { event.preventDefault(); this.setSpeed(1000); }}
-                        >
-                            Slow
-                        </button>
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 500}`}
-                            onClick={(event) => { event.preventDefault(); this.setSpeed(500); }}
-                        >
-                            Normal
-                        </button>
-                        <button
-                            className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === 250}`}
-                            onClick={(event) => { event.preventDefault(); this.setSpeed(250); }}
-                        >
-                            Fast
-                        </button>
-                    </div>
-
-                    {/* PATTERN BUTTONS */}
-
-                    <div className="btnRow patternBtns text-center">
-                        <button
-                            className="btn btn-danger btn-sm formBtn"
-                            onClick={(event) => { event.preventDefault(); this.getRandom(); }}
-                        >
-                            Random
-                        </button>
-                        <button
-                            className="btn btn-danger btn-sm formBtn"
-                            onClick={(event) => { event.preventDefault(); this.getCells(); }}
-                        >
-                            Clear
-                        </button>
-                    </div>
+                    {/* PATTERN LIST */}
 
                     <div className="patternList">
                         <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }} />
-                        <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")}/>
+                        <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
                         {/* <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
                         <img src={require("")} alt="pattern4" onClick={this.getPattern.bind(null, "pattern4")}/>
                         <img src={require("")} alt="pattern5" onClick={this.getPattern.bind(null, "pattern5")}/> */}
