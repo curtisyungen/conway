@@ -12,7 +12,9 @@ class Board extends Component {
             nextBoard: null,
             numRows: null,
             numCols: null,
-            interval: null,
+            timer: null,
+            count: false,
+            speed: null,
         }
     }
 
@@ -20,9 +22,14 @@ class Board extends Component {
         this.setState({
             numRows: 10,
             numCols: 10,
+            speed: 1000,
         }, () => {
             this.getCells();
         });
+    }
+
+    componentWillUnmount = () => {
+        clearInterval(this.state.timer);
     }
 
     setSize = (rows, cols) => {
@@ -31,6 +38,12 @@ class Board extends Component {
             numCols: cols,
         }, () => {
             this.getCells();
+        });
+    }
+
+    setSpeed = (speed) => {
+        this.setState({
+            speed: speed,
         });
     }
 
@@ -90,21 +103,6 @@ class Board extends Component {
         this.setState({
             nextBoard: nextBoard,
         });
-
-        // Get number of live cells on board
-        let board = this.state.board;
-        let count = 0;
-        for (var r in board) {
-            for (var c in board) {
-                if (board[r][c].val === true) {
-                    count += 1;
-                }
-            }
-        }
-
-        if (count === 0) {
-            clearInterval(this.state.interval);
-        }
     }
 
     // Updates a cell's value when clicked
@@ -118,16 +116,6 @@ class Board extends Component {
         });
     }
 
-    // Called when Start button is clicked
-    startInterval = (event) => {
-        event.preventDefault();
-        let interval = setInterval(this.getValues(), 1000);
-
-        this.setState({
-            interval: interval,
-        });
-    }
-
     // Called when the Prev button is clicked
     prevFrame = (event) => {
         event.preventDefault();
@@ -138,6 +126,34 @@ class Board extends Component {
     nextFrame = (event) => {
         event.preventDefault();
         this.getValues();
+    }
+
+    // Called when Start button is clicked
+    startInterval = (event) => {
+        event.preventDefault();
+        
+        let timer = setInterval(() => {
+            let count = this.state.count;
+            count = !count;
+
+            this.setState({
+                count: count,
+            }, () => {
+                this.getValues();
+            });
+        }, this.state.speed);
+
+        this.setState({
+            timer: timer,
+        });
+    }
+
+    stopInterval = (event) => {
+        clearInterval(this.state.timer);
+
+        this.setState({
+            timer: null,
+        });
     }
 
     // Reads cell values from board
@@ -289,12 +305,22 @@ class Board extends Component {
                         >
                             Prev
                         </button>
-                        <button
-                            className="btn btn-primary btn-sm startBtn formBtn"
-                            onClick={this.startInterval}
-                        >
-                            Start
-                        </button>
+                        {this.state.timer ? (
+                            <button
+                                className="btn btn-danger btn-sm stopBtn formBtn"
+                                onClick={this.stopInterval}
+                            >
+                                Stop
+                            </button>
+                        ) : (
+                            <button
+                                className="btn btn-success btn-sm startBtn formBtn"
+                                onClick={this.startInterval}
+                            >
+                                Start
+                            </button>
+                        )}
+                        
                         <button
                             className="btn btn-dark btn-sm formBtn"
                             onClick={this.nextFrame}
@@ -327,6 +353,29 @@ class Board extends Component {
                         </button>
                     </div>
 
+                    {/* SPEED BUTTONS */}
+
+                    <div className="btnRow sizeBtns text-center">
+                        <button
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSpeed(1000); }}
+                        >
+                            Slow
+                        </button>
+                        <button
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSpeed(500); }}
+                        >
+                            Normal
+                        </button>
+                        <button
+                            className="btn btn-outline-dark btn-sm formBtn"
+                            onClick={(event) => { event.preventDefault(); this.setSpeed(250); }}
+                        >
+                            Fast
+                        </button>
+                    </div>
+
                     {/* PATTERN BUTTONS */}
 
                     <div className="btnRow patternBtns text-center">
@@ -339,7 +388,7 @@ class Board extends Component {
                     </div>
 
                     <div className="patternList">
-                        <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => {event.preventDefault(); this.setSize(10, 10);}}/>
+                        <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }} />
                         {/* <img src={require("")} alt="pattern2" onClick={this.getPattern.bind(null, "pattern2")}/>
                         <img src={require("")} alt="pattern3" onClick={this.getPattern.bind(null, "pattern3")}/>
                         <img src={require("")} alt="pattern4" onClick={this.getPattern.bind(null, "pattern4")}/>
