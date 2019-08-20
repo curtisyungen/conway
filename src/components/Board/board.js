@@ -435,11 +435,11 @@ class Board extends Component {
                     {/* THEMES */}
 
                     <div className="themeList text-center">
-                        <div className="theme theme-light"></div>
-                        <div className="theme theme-dark"></div>
-                        <div className="theme theme-blue"></div>
-                        <div className="theme theme-green"></div>
-                        <div className="theme theme-wild"></div>
+                        <div className="theme theme-light"><div className="theme-inner"></div></div>
+                        <div className="theme theme-dark"><div className="theme-inner"></div></div>
+                        <div className="theme theme-blue"><div className="theme-inner"></div></div>
+                        <div className="theme theme-green"><div className="theme-inner"></div></div>
+                        <div className="theme theme-wild"><div className="theme-inner"></div></div>
                     </div>
 
                     {/* PATTERN LIST */}
