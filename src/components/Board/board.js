@@ -6,6 +6,7 @@ import getPatterns from "../../utils/patterns";
 
 const DEFAULT_SPEED = 250;
 const DEFAULT_SIZE = 25;
+const DEFAULT_THEME = "light";
 const FAST = 250;
 const MED = 500;
 const SLOW = 1000;
@@ -23,6 +24,7 @@ class Board extends Component {
             timer: null,
             count: 0,
             speed: null,
+            theme: null,
         }
     }
 
@@ -32,6 +34,7 @@ class Board extends Component {
             numRows: DEFAULT_SIZE,
             numCols: DEFAULT_SIZE,
             speed: DEFAULT_SPEED,
+            theme: DEFAULT_THEME,
         }, () => {
             this.getCells();
         });
@@ -59,6 +62,12 @@ class Board extends Component {
     setSpeed = (speed) => {
         this.setState({
             speed: speed,
+        });
+    }
+
+    setTheme = (theme) => {
+        this.setState({
+            theme: theme,
         });
     }
 
@@ -315,15 +324,16 @@ class Board extends Component {
     render() {
         return (
             this.state.board && this.state.board.length > 0 ? (
-                <div className="main">
+                <div className={`main`}>
 
                     {/* BOARD */}
-                    <div className="board">
+                    <div className={`board board-${this.state.theme}`}>
                         {this.state.board.map(row => (
                             <Row
                                 key={Math.random() * 100000}
                                 row={row}
                                 updateBoard={this.updateBoard}
+                                theme={this.state.theme}
                             />
                         ))}
                     </div>
@@ -432,24 +442,22 @@ class Board extends Component {
                         </div>
                     </div>
 
-                    {/* THEMES */}
-
-                    <div className="themeList text-center">
-                        <div className="theme theme-light"><div className="theme-inner"></div></div>
-                        <div className="theme theme-dark"><div className="theme-inner"></div></div>
-                        <div className="theme theme-blue"><div className="theme-inner"></div></div>
-                        <div className="theme theme-green"><div className="theme-inner"></div></div>
-                        <div className="theme theme-wild"><div className="theme-inner"></div></div>
-                    </div>
-
                     {/* PATTERN LIST */}
-
                     <div className="patternList">
                         <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={this.getPattern.bind(null, "1")} />
                         <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
                         <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "2")} />
                         <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "2")} />
                         {/* <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} /> */}
+                    </div>
+
+                    {/* THEMES */}
+                    <div className="themeList text-center">
+                        <div className="theme theme-light" onClick={this.setTheme.bind(null, "light")}></div>
+                        <div className="theme theme-dark" onClick={this.setTheme.bind(null, "dark")}></div>
+                        <div className="theme theme-blue" onClick={this.setTheme.bind(null, "blue")}></div>
+                        <div className="theme theme-green" onClick={this.setTheme.bind(null, "green")}></div>
+                        <div className="theme theme-wild" onClick={this.setTheme.bind(null, "wild")}></div>
                     </div>
 
                 </div>
