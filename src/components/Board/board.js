@@ -92,7 +92,7 @@ class Board extends Component {
             this.closeThemes();
         });
 
-        document.getElementsByName("body").addClass(`main-${theme}`);
+        document.body.classList.add(`main-${theme}`);
     }
     
     // Opens the Pattern modal
