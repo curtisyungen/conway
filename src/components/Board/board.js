@@ -377,6 +377,13 @@ class Board extends Component {
             this.state.board && this.state.board.length > 0 ? (
                 <div className={`main`}>
 
+                    {/* TITLE */}
+                    <h4 className="title text-center">
+                        <a className="wikiLink" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">
+                            Conway's Game of Life
+                        </a>
+                    </h4>
+
                     {/* BOARD */}
                     <div className={`board board-${this.state.theme}`}>
                         {this.state.board.map(row => (
