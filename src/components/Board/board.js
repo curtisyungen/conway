@@ -92,7 +92,7 @@ class Board extends Component {
             this.closeThemes();
         });
 
-        document.body.classList.remove();
+        document.body.classList.remove("main-light", "main-dark", "main-blue", "main-green");
         document.body.classList.add(`main-${theme}`);
     }
     
