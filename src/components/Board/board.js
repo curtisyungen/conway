@@ -27,22 +27,44 @@ class Board extends Component {
             theme: null,
             openModal: false,
             openThemes: false,
+            disablePatterns: false,
         }
     }
 
     componentDidMount = () => {
-        this.setState({
-            numRows: DEFAULT_SIZE,
-            numCols: DEFAULT_SIZE,
-            speed: DEFAULT_SPEED,
-            theme: DEFAULT_THEME,
-        }, () => {
-            this.getCells();
-        });
+        this.getScreenSize();
     }
 
     componentWillUnmount = () => {
         clearInterval(this.state.timer);
+    }
+
+    // Shrinks board to 10 x 10 if mobile screen size
+    // Also disables pre-loaded patterns
+    getScreenSize = () => {
+        let width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+        let numRows = DEFAULT_SIZE;
+        let numCols = DEFAULT_SIZE;
+        let disablePatterns = false;
+
+        if (width <= 768) {
+            numRows = 10;
+            numCols = 10;
+            disablePatterns = true;
+        }
+
+        this.setState({
+            numRows: numRows,
+            numCols: numCols,
+            speed: DEFAULT_SPEED,
+            theme: DEFAULT_THEME,
+            disablePatterns: disablePatterns,
+        }, () => {
+            this.getCells();
+        });
     }
 
     // Sets size of grid
@@ -492,7 +514,7 @@ class Board extends Component {
                             <button
                                 className="btn btn-outline-dark btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.openModal(); }}
-                                disabled={this.state.timer !== null}
+                                disabled={this.state.timer !== null || this.state.disablePatterns}
                             >
                                 Patterns
                             </button>
