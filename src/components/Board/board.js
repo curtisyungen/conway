@@ -468,6 +468,7 @@ class Board extends Component {
                             <button
                                 className="btn btn-outline-dark btn-sm formBtn"
                                 onClick={this.nextFrame}
+                                disabled={this.state.timer !== null}
                             >
                                 Next
                             </button>
