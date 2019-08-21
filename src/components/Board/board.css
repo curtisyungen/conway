@@ -45,6 +45,17 @@
     color: white;
 }
 
+.curtis-btn {
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.curtis-text {
+    font-size: 13px;
+    margin: 10px auto;
+    width: 350px;
+}
+
 .formBtn {
     margin: 2px;
     width: 100px;
