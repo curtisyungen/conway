@@ -51,12 +51,18 @@
 }
 
 .formBtn {
-    margin: 3px;
+    margin: 2px;
     width: 100px;
 }
 
 .group-inline-block {
     display: inline-block;
+}
+
+.main {
+    background: rgb(242, 242, 242);
+    height: 100vh;
+    padding: 20px;
 }
 
 .pattern {
@@ -68,7 +74,7 @@
 }
 
 .patternList {
-    margin: 15px auto;
+    margin-top: 35px;
     text-align: center;
 }
 
@@ -79,7 +85,7 @@
 }
 
 .size-true, .speed-true {
-    background: rgb(191, 191, 242);
+    background: yellow;
 }
 
 .theme {
@@ -93,6 +99,10 @@
 
 .theme:last-child {
     margin-right: 0px;
+}
+
+.themeList {
+    margin-top: 35px;
 }
 
 .theme-light {
