@@ -41,12 +41,6 @@ class Board extends Component {
         });
     }
 
-    componentDidUpdate = (prevState) => {
-        if (this.state.timer && JSON.stringify(prevState.board) === JSON.stringify(this.state.nextBoard)) {
-            this.stopInterval();
-        }
-    }
-
     componentWillUnmount = () => {
         clearInterval(this.state.timer);
     }
