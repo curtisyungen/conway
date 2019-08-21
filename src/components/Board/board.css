@@ -57,6 +57,7 @@
 .main {
     height: 100vh;
     padding: 20px;
+    padding-top: 40px;
 }
 
 .main-light {
