@@ -2,8 +2,6 @@
   <img src="./src/images/conway.png" alt="logo" />
 </p>
 
-<br/>
-
 # Conway's Game of Life
 **by Curtis Yungen**
 
