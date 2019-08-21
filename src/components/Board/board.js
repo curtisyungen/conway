@@ -91,7 +91,8 @@ class Board extends Component {
         }, () => {
             this.closeThemes();
         });
-
+        
+        document.body.classList.remove();
         document.body.classList.add(`main-${theme}`);
     }
     
