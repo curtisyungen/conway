@@ -90,7 +90,8 @@
 
 .subTitle {
     font-size: 12px;
-    margin-top: -15px;
+    font-weight: 400;
+    margin-top: 5px;
 }
 
 .theme {
@@ -136,7 +137,7 @@
 }
 
 .title {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .wikiLink {
