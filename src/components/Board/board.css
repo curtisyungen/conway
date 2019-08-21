@@ -60,9 +60,32 @@
 }
 
 .main {
-    background: rgb(242, 242, 242);
     height: 100vh;
     padding: 20px;
+}
+
+.main-light {
+    background: lightgray;
+}
+
+.main-dark {
+    background: darkgray;
+}
+
+.main-blue {
+    background: darkblue;
+}
+
+.main-blue h4 {
+    color: white !important;
+}
+
+.main-green {
+    background: darkgreen;
+}
+
+.main-green h4 {
+    color: white !important;
 }
 
 .pattern {
