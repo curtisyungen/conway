@@ -400,11 +400,6 @@ class Board extends Component {
                     {/* CONTROL BAR */}
                     <div className="controlBar">
 
-                        {/* COUNTER */}
-                        {/* <div className="counter">
-                            {this.state.count}
-                        </div> */}
-
                         <div className="buttonSet1">
 
                             {/* SIZE BUTTONS */}
@@ -534,6 +529,7 @@ class Board extends Component {
                                 <div className="theme theme-light" onClick={this.setTheme.bind(null, "light")}></div>
                                 <div className="theme theme-dark" onClick={this.setTheme.bind(null, "dark")}></div>
                                 <div className="theme theme-blue" onClick={this.setTheme.bind(null, "blue")}></div>
+                                <div className="theme theme-green" onClick={this.setTheme.bind(null, "green")}></div>
                             </div>
                         </Modal>
                     ) : (
