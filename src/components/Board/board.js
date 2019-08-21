@@ -8,6 +8,7 @@ import getPatterns from "../../utils/patterns";
 const DEFAULT_SPEED = 250;
 const DEFAULT_SIZE = 25;
 const DEFAULT_THEME = "light";
+const DEFAULT_BTN_THEME = "dark";
 const FAST = 250;
 const SLOW = 500;
 
@@ -25,6 +26,7 @@ class Board extends Component {
             count: 0,
             speed: null,
             theme: null,
+            btnTheme: null,
             openModal: false,
             openThemes: false,
             disablePatterns: false,
@@ -61,6 +63,7 @@ class Board extends Component {
             numCols: numCols,
             speed: DEFAULT_SPEED,
             theme: DEFAULT_THEME,
+            btnTheme: DEFAULT_BTN_THEME,
             disablePatterns: disablePatterns,
         }, () => {
             this.getCells();
@@ -84,10 +87,17 @@ class Board extends Component {
         });
     }
 
-    // Sets color theme of board and cells
+    // Sets color theme of entire display
     setTheme = (theme) => {
+
+        let btnTheme = "dark";
+        if (theme === "blue" || theme === "green") {
+            btnTheme = "light";
+        }
+
         this.setState({
             theme: theme,
+            btnTheme: btnTheme,
         }, () => {
             this.closeThemes();
         });
@@ -401,7 +411,7 @@ class Board extends Component {
     render() {
         return (
             this.state.board && this.state.board.length > 0 ? (
-                <div className={`main`}>
+                <div className={`main main-${this.state.theme}`}>
 
                     {/* TITLE */}
                     <h4 className="title text-center">
@@ -426,35 +436,12 @@ class Board extends Component {
 
                     {/* CONTROL BAR */}
                     <div className="controlBar">
-
                         <div className="buttonSet1">
-
-                            {/* SIZE BUTTONS */}
-                            {/* <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
-                            >
-                                Small
-                            </button>
-
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
-                            >
-                                Medium
-                            </button>
-
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
-                            >
-                                Large
-                            </button> */}
 
                             {/* SPEED BUTTONS */}
                             {this.state.speed === FAST ? (
                                 <button
-                                    className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === SLOW}`}
+                                    className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === SLOW}`}
                                     onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
                                     disabled={this.state.timer !== null}
                                 >
@@ -462,7 +449,7 @@ class Board extends Component {
                                 </button>
                             ) : (
                                 <button
-                                    className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === FAST}`}
+                                    className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === FAST}`}
                                     onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
                                     disabled={this.state.timer !== null}
                                 >
@@ -488,7 +475,7 @@ class Board extends Component {
                             )}
 
                             <button
-                                className="btn btn-outline-dark btn-sm formBtn"
+                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={this.nextFrame}
                                 disabled={this.state.timer !== null}
                             >
@@ -504,7 +491,7 @@ class Board extends Component {
                             </button> */}
 
                             <button
-                                className="btn btn-outline-dark btn-sm formBtn"
+                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={(event) => { event.preventDefault(); this.openThemes(); }}
                                 disabled={this.state.timer !== null}
                             >
@@ -512,7 +499,7 @@ class Board extends Component {
                             </button>
 
                             <button
-                                className="btn btn-outline-dark btn-sm formBtn"
+                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={(event) => { event.preventDefault(); this.openModal(); }}
                                 disabled={this.state.timer !== null || this.state.disablePatterns}
                             >
@@ -527,6 +514,13 @@ class Board extends Component {
                                 Clear
                             </button>
                         </div>
+
+                        {/* FOOTNOTE */}
+                        {this.state.disablePatterns ? (
+                            <p className="subTitle">Pre-loaded patterns not available on mobile.</p>
+                        ) : (
+                            <></>
+                        )}
                     </div>
 
                     {/* PATTERN LIST */}
