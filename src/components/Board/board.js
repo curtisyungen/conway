@@ -81,7 +81,7 @@ class Board extends Component {
     setTheme = (theme) => {
 
         let btnTheme = "dark";
-        if (theme === "blue" || theme === "green") {
+        if (theme === "blue" || theme === "green" || theme === "dark") {
             btnTheme = "light";
         }
 
@@ -91,7 +91,7 @@ class Board extends Component {
         }, () => {
             this.closeThemes();
         });
-        
+
         document.body.classList.remove();
         document.body.classList.add(`main-${theme}`);
     }
