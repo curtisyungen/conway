@@ -48,6 +48,24 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
+    <style>
+      .main-light {
+          background: rgb(252, 252, 252);
+      }
+
+      .main-dark {
+          background: rgb(161, 161, 161);
+      }
+
+      .main-blue {
+          background: rgb(61, 61, 125);
+      }
+
+      .main-green {
+          background: rgb(0, 100, 51);
+      }
+    </style>
+
     <script>
 
       function setTheme() {
@@ -56,16 +74,17 @@
         console.log(theme);
 
         if (theme[0] != null && theme[0].hasClass("main-light")) {
-          $(".body").addClass("main-light");
+          $("body").addClass("main-light");
         }
         else if (theme[0] != null && theme[0].hasClass("main-dark")) {
-          $(".body").addClass("main-dark");
+          $("body").addClass("main-dark");
         }
         else if (theme[0] != null && theme[0].hasClass("main-blue")) {
-          $(".body").addClass("main-blue");
+          $("body").addClass("main-blue");
         }
         else if (theme[0] != null && theme[0].hasClass("main-green")) {
-          $(".body").addClass("main-green");
+          $("body").addClass("main-green");
+          console.log("true green");
         }
       }
 
