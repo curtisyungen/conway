@@ -45,6 +45,7 @@ class Board extends Component {
         clearInterval(this.state.timer);
     }
 
+    // Sets size of grid
     setSize = (rows, cols) => {
         this.setState({
             numRows: rows,
@@ -54,12 +55,14 @@ class Board extends Component {
         });
     }
 
+    // Sets interval speed of simulation to either fast or slow
     setSpeed = (speed) => {
         this.setState({
             speed: speed,
         });
     }
 
+    // Sets color theme of board and cells
     setTheme = (theme) => {
         this.setState({
             theme: theme,
@@ -97,6 +100,7 @@ class Board extends Component {
         });
     }
 
+    // Generates a random pattern on the board
     getRandom = () => {
         let numRows = parseInt(this.state.numRows);
         let numCols = parseInt(this.state.numCols);
@@ -194,6 +198,7 @@ class Board extends Component {
         });
     }
 
+    // Stops the simulation
     stopInterval = (event) => {
         clearInterval(this.state.timer);
 
@@ -274,30 +279,35 @@ class Board extends Component {
         }
     }
 
+    // Opens the Pattern modal
     openModal = () => {
         this.setState({
             openModal: true,
         });
     }
     
+    // Closes the Pattern modal
     closeModal = () => {
         this.setState({
             openModal: false,
         });
     }
 
+    // Opens the Theme modal
     openThemes = () => {
         this.setState({
             openThemes: true,
         });
     }
 
+    // Closes the Theme modal
     closeThemes = () => {
         this.setState({
             openThemes: false,
         });
     }
 
+    // Loads a pattern from file and renders to board
     getPattern = (pattern) => {
         let board;
 
