@@ -56,6 +56,11 @@ module.exports = {
     getPattern4() {
         let pattern = this.getPattern1();
 
+        pattern[0][1].val = true;
+        pattern[1][2].val = true;
+        pattern[2][0].val = true;
+        pattern[2][1].val = true;
+        pattern[2][2].val = true;
         pattern[10][11].val = true;
         pattern[10][12].val = true;
         pattern[10][13].val = true;
