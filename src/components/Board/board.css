@@ -21,10 +21,6 @@
     background: rgb(62, 177, 62);
 }
 
-.board-wild {
-    background: lightgray;
-}
-
 .boardForm {
     text-align: center;
 }
@@ -41,21 +37,12 @@
     text-align: center;
 }
 
-.buttonSet2 {
-    display: block;
-    text-align: center;
-}
-
 .color-dark {
     color: black;
 }
 
 .color-light {
     color: white;
-}
-
-.counter {
-    text-align: center;
 }
 
 .formBtn {
@@ -105,10 +92,6 @@
     flex-wrap: nowrap !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
-}
-
-.size-true, .speed-true {
-    background: yellow;
 }
 
 .subTitle {

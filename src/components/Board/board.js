@@ -441,7 +441,7 @@ class Board extends Component {
                             {/* SPEED BUTTONS */}
                             {this.state.speed === FAST ? (
                                 <button
-                                    className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === SLOW}`}
+                                    className={`btn btn-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === SLOW}`}
                                     onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
                                     disabled={this.state.timer !== null}
                                 >
@@ -449,7 +449,7 @@ class Board extends Component {
                                 </button>
                             ) : (
                                 <button
-                                    className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === FAST}`}
+                                    className={`btn btn-${this.state.btnTheme} btn-sm formBtn speed-${this.state.speed === FAST}`}
                                     onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
                                     disabled={this.state.timer !== null}
                                 >
@@ -475,7 +475,7 @@ class Board extends Component {
                             )}
 
                             <button
-                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
+                                className={`btn btn-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={this.nextFrame}
                                 disabled={this.state.timer !== null}
                             >
@@ -491,7 +491,7 @@ class Board extends Component {
                             </button> */}
 
                             <button
-                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
+                                className={`btn btn-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={(event) => { event.preventDefault(); this.openThemes(); }}
                                 disabled={this.state.timer !== null}
                             >
@@ -499,7 +499,7 @@ class Board extends Component {
                             </button>
 
                             <button
-                                className={`btn btn-outline-${this.state.btnTheme} btn-sm formBtn`}
+                                className={`btn btn-${this.state.btnTheme} btn-sm formBtn`}
                                 onClick={(event) => { event.preventDefault(); this.openModal(); }}
                                 disabled={this.state.timer !== null || this.state.disablePatterns}
                             >
@@ -507,7 +507,7 @@ class Board extends Component {
                             </button>
 
                             <button
-                                className="btn btn-outline-danger btn-sm formBtn"
+                                className="btn btn-danger btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.getCells(); }}
                                 disabled={this.state.timer !== null}
                             >
