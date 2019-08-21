@@ -34,7 +34,7 @@
     -->
     <title>Conway</title>
   </head>
-  <body class="body">
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -47,49 +47,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-    <style>
-      .main-light {
-          background: rgb(252, 252, 252);
-      }
-
-      .main-dark {
-          background: rgb(161, 161, 161);
-      }
-
-      .main-blue {
-          background: rgb(61, 61, 125);
-      }
-
-      .main-green {
-          background: rgb(0, 100, 51);
-      }
-    </style>
-
-    <script>
-
-      function setTheme() {
-        let theme = document.getElementsByClassName("main");
-
-        console.log(theme, theme[0]);
-
-        if (theme[0] != null && theme[0].hasClass("main-light")) {
-          $("body").addClass("main-light");
-        }
-        else if (theme[0] != null && theme[0].hasClass("main-dark")) {
-          $("body").addClass("main-dark");
-        }
-        else if (theme[0] != null && theme[0].hasClass("main-blue")) {
-          $("body").addClass("main-blue");
-        }
-        else if (theme != null && theme.hasClass("main-green")) {
-          $("body").addClass("main-green");
-          console.log("true green");
-        }
-      }
-
-      setTheme();
-
-    </script>
   </body>
 </html>
