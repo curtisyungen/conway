@@ -46,6 +46,14 @@
     text-align: center;
 }
 
+.color-dark {
+    color: black;
+}
+
+.color-light {
+    color: white;
+}
+
 .counter {
     text-align: center;
 }
@@ -74,10 +82,6 @@
 
 .main-blue {
     background: rgb(61, 61, 125);
-}
-
-.h4-light {
-    color: white !important;
 }
 
 .main-green {
