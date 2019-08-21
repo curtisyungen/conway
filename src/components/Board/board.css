@@ -65,27 +65,23 @@
 }
 
 .main-light {
-    background: lightgray;
+    background: rgb(252, 252, 252);
 }
 
 .main-dark {
-    background: darkgray;
+    background: rgb(161, 161, 161);
 }
 
 .main-blue {
-    background: darkblue;
+    background: rgb(61, 61, 125);
 }
 
-.main-blue h4 {
+.h4-light {
     color: white !important;
 }
 
 .main-green {
-    background: darkgreen;
-}
-
-.main-green h4 {
-    color: white !important;
+    background: rgb(61, 120, 61);
 }
 
 .pattern {

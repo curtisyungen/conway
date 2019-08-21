@@ -414,7 +414,7 @@ class Board extends Component {
                 <div className={`main main-${this.state.theme}`}>
 
                     {/* TITLE */}
-                    <h4 className="title text-center">
+                    <h4 className={`title text-center h4-${this.state.btnTheme}`}>
                         <a className="wikiLink" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">
                             Conway's Game of Life
                         </a>
