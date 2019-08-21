@@ -517,7 +517,7 @@ class Board extends Component {
 
                         {/* FOOTNOTE */}
                         {this.state.disablePatterns ? (
-                            <p className="subTitle">Pre-loaded patterns not available on mobile.</p>
+                            <p className="subTitle text-center">Pre-loaded patterns not available on mobile.</p>
                         ) : (
                             <></>
                         )}
