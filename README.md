@@ -57,6 +57,6 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 ### Screenshots
 
-#### Landing Page
+#### 
 ![]()
 <br/>
