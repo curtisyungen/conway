@@ -71,7 +71,7 @@
       function setTheme() {
         let theme = document.getElementsByClassName("main");
 
-        console.log(theme);
+        console.log(theme[0], theme[0].hasClass("main-green"));
 
         if (theme[0] != null && theme[0].hasClass("main-light")) {
           $("body").addClass("main-light");
