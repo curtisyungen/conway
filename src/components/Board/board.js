@@ -386,7 +386,7 @@ class Board extends Component {
                         <a className="wikiLink" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">
                             Conway's Game of Life
                         </a>
-                        <p className="subTitle">Draw or load a pattern on the board.</p>
+                        <p className="subTitle">Draw or load a pattern on the board and click Start.</p>
                     </h4>
 
                     {/* BOARD */}
