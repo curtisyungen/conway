@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import Row from "../Row/row";
 import "./board.css";
 
@@ -8,7 +9,6 @@ const DEFAULT_SPEED = 100;
 const DEFAULT_SIZE = 25;
 const DEFAULT_THEME = "light";
 const FAST = 100;
-const MED = 250;
 const SLOW = 500;
 
 class Board extends Component {
@@ -25,11 +25,12 @@ class Board extends Component {
             count: 0,
             speed: null,
             theme: null,
+            openModal: false,
+            openThemes: false,
         }
     }
 
     componentDidMount = () => {
-
         this.setState({
             numRows: DEFAULT_SIZE,
             numCols: DEFAULT_SIZE,
@@ -68,6 +69,8 @@ class Board extends Component {
     setTheme = (theme) => {
         this.setState({
             theme: theme,
+        }, () => {
+            this.closeThemes();
         });
     }
 
@@ -163,12 +166,6 @@ class Board extends Component {
         this.setState({
             board: board,
         });
-    }
-
-    // Called when the Prev button is clicked
-    prevFrame = (event) => {
-        event.preventDefault();
-        alert("Button not yet operable.");
     }
 
     // Called when Next button is clicked
@@ -283,6 +280,30 @@ class Board extends Component {
         }
     }
 
+    openModal = () => {
+        this.setState({
+            openModal: true,
+        });
+    }
+    
+    closeModal = () => {
+        this.setState({
+            openModal: false,
+        });
+    }
+
+    openThemes = () => {
+        this.setState({
+            openThemes: true,
+        });
+    }
+
+    closeThemes = () => {
+        this.setState({
+            openThemes: false,
+        });
+    }
+
     getPattern = (pattern) => {
         let board;
 
@@ -299,6 +320,8 @@ class Board extends Component {
 
         this.setState({
             board: board,
+        }, () => {
+            this.closeModal();
         });
     }
 
@@ -362,6 +385,7 @@ class Board extends Component {
                                 row={row}
                                 updateBoard={this.updateBoard}
                                 theme={this.state.theme}
+                                timer={this.state.timer}
                             />
                         ))}
                     </div>
@@ -370,20 +394,54 @@ class Board extends Component {
                     <div className="controlBar">
 
                         {/* COUNTER */}
-                        <div className="counter">
+                        {/* <div className="counter">
                             {this.state.count}
-                        </div>
+                        </div> */}
 
                         <div className="buttonSet1">
 
-                            {/* CONTROL BUTTONS */}
-                            <button
-                                className="btn btn-dark btn-sm formBtn"
-                                onClick={this.prevFrame}
+                            {/* SIZE BUTTONS */}
+                            {/* <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
                             >
-                                Prev
+                                Small
                             </button>
 
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
+                            >
+                                Medium
+                            </button>
+
+                            <button
+                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
+                                onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
+                            >
+                                Large
+                            </button> */}
+
+                            {/* SPEED BUTTONS */}
+                            {this.state.speed === FAST ? (
+                                <button
+                                    className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === SLOW}`}
+                                    onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
+                                    disabled={this.state.timer !== null}
+                                >
+                                    Go Slower
+                                </button>
+                            ) : (
+                                <button
+                                    className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === FAST}`}
+                                    onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
+                                    disabled={this.state.timer !== null}
+                                >
+                                    Go Faster
+                                </button>
+                            )}
+
+                            {/* CONTROL BUTTONS */}
                             {this.state.timer ? (
                                 <button
                                     className="btn btn-danger btn-sm stopBtn formBtn"
@@ -401,67 +459,38 @@ class Board extends Component {
                             )}
 
                             <button
-                                className="btn btn-dark btn-sm formBtn"
+                                className="btn btn-outline-dark btn-sm formBtn"
                                 onClick={this.nextFrame}
                             >
                                 Next
                             </button>
 
-                            {/* SIZE BUTTONS */}
                             {/* <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 3}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(3, 3); }}
-                            >
-                                Small
-                            </button>
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 10}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(10, 10); }}
-                            >
-                                Medium
-                            </button>
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn size-${this.state.numRows === 25}`}
-                                onClick={(event) => { event.preventDefault(); this.setSize(25, 25); }}
-                            >
-                                Large
-                            </button> */}
-                        </div>
-
-                        <div className="buttonSet2">
-
-                            {/* SPEED BUTTONS */}
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === SLOW}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(SLOW); }}
-                                disabled={this.state.timer !== null}
-                            >
-                                Slow
-                            </button>
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === MED}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(MED); }}
-                                disabled={this.state.timer !== null}
-                            >
-                                Normal
-                            </button>
-                            <button
-                                className={`btn btn-outline-dark btn-sm formBtn speed-${this.state.speed === FAST}`}
-                                onClick={(event) => { event.preventDefault(); this.setSpeed(FAST); }}
-                                disabled={this.state.timer !== null}
-                            >
-                                Fast
-                            </button>
-
-                            <button
                                 className="btn btn-danger btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.getRandom(); }}
                                 disabled={this.state.timer !== null}
                             >
                                 Random
-                            </button>
+                            </button> */}
+
                             <button
-                                className="btn btn-danger btn-sm formBtn"
+                                className="btn btn-outline-dark btn-sm formBtn"
+                                onClick={(event) => { event.preventDefault(); this.openThemes(); }}
+                                disabled={this.state.timer !== null}
+                            >
+                                Themes
+                            </button>
+
+                            <button
+                                className="btn btn-outline-dark btn-sm formBtn"
+                                onClick={(event) => { event.preventDefault(); this.openModal(); }}
+                                disabled={this.state.timer !== null}
+                            >
+                                Patterns
+                            </button>
+
+                            <button
+                                className="btn btn-outline-danger btn-sm formBtn"
                                 onClick={(event) => { event.preventDefault(); this.getCells(); }}
                                 disabled={this.state.timer !== null}
                             >
@@ -471,23 +500,37 @@ class Board extends Component {
                     </div>
 
                     {/* PATTERN LIST */}
-                    <div className="patternList">
-                        <img className="pattern" src={require("../../images/pattern1.png")} alt="pattern1" onClick={this.getPattern.bind(null, "1")} />
-                        <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
-                        <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "3")} />
-                        <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "4")} />
-                        <img className="pattern" src={require("../../images/pattern5.png")} alt="pattern5" onClick={this.getPattern.bind(null, "5")} />
-                        <img className="pattern" src={require("../../images/pattern8.png")} alt="pattern8" onClick={this.getPattern.bind(null, "8")} />
-                    </div>
+                    {this.state.openModal ? (
+                        <Modal 
+                            open={this.state.openModal}
+                            onClose={this.closeModal}
+                        >
+                            <div className="patternList">
+                                <img className="pattern" src={require("../../images/pattern2.png")} alt="pattern2" onClick={this.getPattern.bind(null, "2")} />
+                                <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "3")} />
+                                <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "4")} />
+                                <img className="pattern" src={require("../../images/pattern8.png")} alt="pattern8" onClick={this.getPattern.bind(null, "8")} />
+                            </div>
+                        </Modal>
+                    ) : (
+                        <></>
+                    )}
 
                     {/* THEMES */}
-                    <div className="themeList text-center">
-                        <div className="theme theme-light" onClick={this.setTheme.bind(null, "light")}></div>
-                        <div className="theme theme-dark" onClick={this.setTheme.bind(null, "dark")}></div>
-                        <div className="theme theme-blue" onClick={this.setTheme.bind(null, "blue")}></div>
-                        <div className="theme theme-green" onClick={this.setTheme.bind(null, "green")}></div>
-                        <div className="theme theme-wild" onClick={this.setTheme.bind(null, "wild")}></div>
-                    </div>
+                    {this.state.openThemes ? (
+                        <Modal
+                            open={this.state.openThemes}
+                            onClose={this.closeThemes}
+                        >
+                            <div className="themeList text-center">
+                                <div className="theme theme-light" onClick={this.setTheme.bind(null, "light")}></div>
+                                <div className="theme theme-dark" onClick={this.setTheme.bind(null, "dark")}></div>
+                                <div className="theme theme-blue" onClick={this.setTheme.bind(null, "blue")}></div>
+                            </div>
+                        </Modal>
+                    ) : (
+                        <></>
+                    )}
 
                 </div>
             ) : (

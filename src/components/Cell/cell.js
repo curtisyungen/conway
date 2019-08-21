@@ -22,11 +22,16 @@ class Cell extends Component {
     }
 
     toggleCell = () => {
-        this.setState({
-            val: !this.state.val,
-        }, () => {
-            this.updateBoard();
-        });
+        if (this.props.timer === null) {
+            this.setState({
+                val: !this.state.val,
+            }, () => {
+                this.updateBoard();
+            });
+        }
+        else {
+            alert("Cannot click board during simulation!");
+        }
     }
 
     updateBoard = () => {
