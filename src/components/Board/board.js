@@ -70,16 +70,6 @@ class Board extends Component {
         });
     }
 
-    // Sets size of grid
-    setSize = (rows, cols) => {
-        this.setState({
-            numRows: rows,
-            numCols: cols,
-        }, () => {
-            this.getCells();
-        });
-    }
-
     // Sets interval speed of simulation to either fast or slow
     setSpeed = (speed) => {
         this.setState({
@@ -100,6 +90,56 @@ class Board extends Component {
             btnTheme: btnTheme,
         }, () => {
             this.closeThemes();
+        });
+    }
+    
+    // Opens the Pattern modal
+    openModal = () => {
+        this.setState({
+            openModal: true,
+        });
+    }
+    
+    // Closes the Pattern modal
+    closeModal = () => {
+        this.setState({
+            openModal: false,
+        });
+    }
+
+    // Opens the Theme modal
+    openThemes = () => {
+        this.setState({
+            openThemes: true,
+        });
+    }
+
+    // Closes the Theme modal
+    closeThemes = () => {
+        this.setState({
+            openThemes: false,
+        });
+    }
+
+    // Loads a pattern from file and renders to board
+    getPattern = (pattern) => {
+        let board;
+
+        switch(pattern) {
+            case "1": board = getPatterns.getPattern1(); break;
+            case "2": board = getPatterns.getPattern2(); break;
+            case "3": board = getPatterns.getPattern3(); break;
+            case "4": board = getPatterns.getPattern4(); break;
+            case "5": board = getPatterns.getPattern5(); break;
+            case "8": board = getPatterns.getPattern8(); break;
+            case "9": board = getPatterns.getPattern9(); break;
+            default: board = getPatterns.getPattern1();
+        }
+
+        this.setState({
+            board: board,
+        }, () => {
+            this.closeModal();
         });
     }
 
@@ -145,7 +185,7 @@ class Board extends Component {
                 let cell = {
                     row: i,
                     col: j,
-                    val: (Math.random() * 50) < 15,
+                    val: (Math.random() * 50) < 10,
                 }
 
                 row.push(cell);
@@ -198,13 +238,13 @@ class Board extends Component {
         });
     }
 
-    // Called when Next button is clicked
+    // Advances to next frame in simulation
     nextFrame = (event) => {
         event.preventDefault();
         this.getValues();
     }
 
-    // Called when Start button is clicked
+    // Starts simulation
     startInterval = (event) => {
         event.preventDefault();
 
@@ -309,56 +349,6 @@ class Board extends Component {
                 this.conway(row, col, currVal, [topLeft, topMid, topRight, midLeft, midRight, botLeft, botMid, botRight]);
             }
         }
-    }
-
-    // Opens the Pattern modal
-    openModal = () => {
-        this.setState({
-            openModal: true,
-        });
-    }
-    
-    // Closes the Pattern modal
-    closeModal = () => {
-        this.setState({
-            openModal: false,
-        });
-    }
-
-    // Opens the Theme modal
-    openThemes = () => {
-        this.setState({
-            openThemes: true,
-        });
-    }
-
-    // Closes the Theme modal
-    closeThemes = () => {
-        this.setState({
-            openThemes: false,
-        });
-    }
-
-    // Loads a pattern from file and renders to board
-    getPattern = (pattern) => {
-        let board;
-
-        switch(pattern) {
-            case "1": board = getPatterns.getPattern1(); break;
-            case "2": board = getPatterns.getPattern2(); break;
-            case "3": board = getPatterns.getPattern3(); break;
-            case "4": board = getPatterns.getPattern4(); break;
-            case "5": board = getPatterns.getPattern5(); break;
-            case "8": board = getPatterns.getPattern8(); break;
-            case "9": board = getPatterns.getPattern9(); break;
-            default: board = getPatterns.getPattern1();
-        }
-
-        this.setState({
-            board: board,
-        }, () => {
-            this.closeModal();
-        });
     }
 
     // Applies the Conway algorithm to each cell to determine if it will live or die
