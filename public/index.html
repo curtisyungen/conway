@@ -71,7 +71,7 @@
       function setTheme() {
         let theme = document.getElementsByClassName("main");
 
-        console.log(theme[0], theme[0].hasClass("main-green"));
+        console.log(theme, theme[0]);
 
         if (theme[0] != null && theme[0].hasClass("main-light")) {
           $("body").addClass("main-light");
@@ -82,7 +82,7 @@
         else if (theme[0] != null && theme[0].hasClass("main-blue")) {
           $("body").addClass("main-blue");
         }
-        else if (theme[0] != null && theme[0].hasClass("main-green")) {
+        else if (theme != null && theme.hasClass("main-green")) {
           $("body").addClass("main-green");
           console.log("true green");
         }
