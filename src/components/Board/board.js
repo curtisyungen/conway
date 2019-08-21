@@ -91,6 +91,8 @@ class Board extends Component {
         }, () => {
             this.closeThemes();
         });
+
+        document.getElementsByName("body").addClass(`main-${theme}`);
     }
     
     // Opens the Pattern modal
