@@ -515,11 +515,11 @@ class Board extends Component {
 
                     {/* CURTIS PORTFOLIO LINK */}
                     <div className="curtis text-center">
-                        <p className={`curtisText color-${this.state.btnTheme}`}>
+                        <p className={`curtis-text color-${this.state.btnTheme}`}>
                             This project was created by Curtis Yungen.
                             Check out his Web Development Portfolio here: 
                             <a 
-                                className={`btn btn-warning btn-sm`}
+                                className={`btn btn-warning btn-sm curtis-btn`}
                                 href="https://curtisyungen.github.io/Portfolio"
                                 target="_blank"
                                 rel="noopener noreferrer"
