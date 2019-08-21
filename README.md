@@ -3,6 +3,10 @@
 
 August 2019
 
+Conway's Game of Life is a simulation based on an initial state and four simple rules governing how this state evolves. Read the rules here: Link to Wikipedia. 
+
+In this project, a user can draw a particular pattern on a 25 x 25 grid and click Start to commence the simulation. The pattern then mutates based on the four aforementioned rules, forming new patterns and continuing until the simulation reaches a static or oscillating state.
+
 Check out the project here: https://conway-cjy.herokuapp.com.
 
 ### Rules:
