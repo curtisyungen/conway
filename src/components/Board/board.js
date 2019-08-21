@@ -513,6 +513,22 @@ class Board extends Component {
                         )}
                     </div>
 
+                    {/* CURTIS PORTFOLIO LINK */}
+                    <div className="curtis text-center">
+                        <p className={`curtisText color-${this.state.btnTheme}`}>
+                            This project was created by Curtis Yungen.
+                            Check out his Web Development Portfolio here: 
+                            <a 
+                                className={`btn btn-warning btn-sm`}
+                                href="https://curtisyungen.github.io/Portfolio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Hire Curtis!
+                            </a>
+                        </p>
+                    </div>
+
                     {/* PATTERN LIST */}
                     {this.state.openModal ? (
                         <Modal 
