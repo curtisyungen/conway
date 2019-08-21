@@ -46,13 +46,14 @@
 }
 
 .curtis-btn {
-    margin-top: 5px;
+    margin-top: 10px;
     text-decoration: none;
+    width: 250px;
 }
 
 .curtis-text {
     font-size: 13px;
-    margin: 10px auto;
+    margin: 15px auto;
     width: 350px;
 }
 
