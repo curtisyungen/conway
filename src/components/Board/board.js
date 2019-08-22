@@ -543,6 +543,7 @@ class Board extends Component {
                                 <img className="pattern" src={require("../../images/pattern3.png")} alt="pattern3" onClick={this.getPattern.bind(null, "3")} />
                                 <img className="pattern" src={require("../../images/pattern4.png")} alt="pattern4" onClick={this.getPattern.bind(null, "4")} />
                                 <img className="pattern" src={require("../../images/pattern8.png")} alt="pattern8" onClick={this.getPattern.bind(null, "8")} />
+                                <img className="pattern" src={require("../../images/random.png")} alt="random" onClick={this.getRandom} />
                             </div>
                         </Modal>
                     ) : (
