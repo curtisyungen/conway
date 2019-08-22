@@ -89,10 +89,12 @@
 }
 
 .pattern {
+    border: 1px solid black;
     cursor: pointer;
     display: inline-block;
     height: 150px;
-    margin-right: 3px;
+    margin-right: 5px;
+    margin-top: 5px;
     width: 150px;
 }
 

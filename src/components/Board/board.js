@@ -201,6 +201,7 @@ class Board extends Component {
             counter: 0,
         }, () => {
             this.resetNextBoard();
+            this.closeModal();
         });
     }
 
